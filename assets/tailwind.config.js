@@ -16,7 +16,6 @@ module.exports = {
     extend: {
       fontFamily: {
         inter: ['Inter'],
-        manrope: ['Manrope'],
         quicksand: ["QuickSand"]
       },
       colors: {
@@ -63,7 +62,6 @@ module.exports = {
             size = theme("spacing.4")
           }
           return {
-            [`--hero-${name}`]: `url('data:image/svg+xml;utf8,${content}')`,
             "-webkit-mask": `var(--hero-${name})`,
             "mask": `var(--hero-${name})`,
             "mask-repeat": "no-repeat",
