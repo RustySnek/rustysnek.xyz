@@ -1,0 +1,9 @@
+services:
+  elixirus:
+    build: .
+    container_name: rustysnek
+    ports: 
+      - "4000:4000"
+    environment:
+      SECRET_KEY_BASE: "HtbfuuS0udhJY35EsqYv/K6JhNBtd7QMmUd5cKUuAZz76PJkg+kbyR5LweR4S/SD"
+      PHX_HOST: "172.17.0.1"

@@ -26,7 +26,9 @@ config :venomous, :snake_manager, %{
   cleaner_interval: 5_000,
   reload_module: :reload,
   python_opts: [
-    module_paths: ["python/"]
+    module_paths: [
+      Path.join(:code.priv_dir(:rustysnek), "python/")
+    ]
   ]
 }
 
