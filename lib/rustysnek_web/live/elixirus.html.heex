@@ -1,0 +1,198 @@
+<div class="bg-gray-900 text-gray-100 font-inter text-lg md:text-2xl p-6 md:p-12">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-quicksand cool-text md:text-6xl font-extrabold text-fuchsia-400 mb-4">
+      Elixirus 📔
+    </h1>
+    <h2>📒 A better replacement for Synergia Learning Managment System web interface</h2>
+
+    <div class="md:-mt-6 md:mb-0 mb-4 flex flex-col md:flex-row gap-x-4 items-center gap-8 min-h-40">
+      <a
+        rel="noopener noreferrer"
+        target="_blank"
+        href="https://elixirus.rustysnek.xyz/student"
+        class="rounded-lg min-w-40 p-4 bg-gray-800 flex flex-col justify-center items-center cool-shadow duration-500 transition hover:shadow-white text-2xl"
+      >
+        <span>Live</span>
+      </a>
+      <a
+        rel="noopener noreferrer"
+        target="_blank"
+        href="https://elixirus-test.rustysnek.xyz/student"
+        class="rounded-lg min-w-40 p-4 bg-gray-800 flex flex-col justify-center items-center cool-shadow duration-500 transition hover:shadow-white text-2xl"
+      >
+        <span>Demo</span>
+      </a>
+      <a
+        rel="noopener noreferrer"
+        target="_blank"
+        href="https://github.com/RustySnek/Elixirus"
+        class="rounded-lg min-w-40 p-4 bg-gray-800 flex flex-col justify-center items-center cool-shadow duration-500 transition hover:shadow-white text-2xl"
+      >
+        <span>Github</span>
+      </a>
+    </div>
+    <p class="text-xl md:text-2xl mb-12 leading-relaxed text-gray-300">
+      Elixirus is a web application written in Elixir Phoenix for the
+      <.link
+        target="_blank"
+        class="text-fuchsia-400 hover:text-fuchsia-300"
+        navigate="/librus-apix"
+      >
+        librus_apix
+      </.link>
+      web scraper, providing a superior replacement for the native Librus web interface.
+    </p>
+    <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-fuchsia-300">Table of content</h2>
+    <ul class="space-y-4 mb-12">
+      <.list_item anchor="#screenshots" content="Screenshots 📷" />
+      <.list_item anchor="#data-caching" content="Data Caching ⚡" />
+      <.list_item anchor="#token-management" content="Token Management 🔒" />
+      <.list_item anchor="#push-notifications" content="Push Notifications 📲" />
+      <.list_item anchor="#qol" content="QoL Features 🌟" />
+      <.list_item anchor="#development" content="Development 🔨" />
+      <.list_item anchor="#deployment" content="Deployment 🚀" />
+      <.list_item anchor="#tech-used" content="Tech used 🤖" />
+    </ul>
+
+    <h2 id="screenshots" class="text-2xl md:text-3xl font-semibold mb-6 text-fuchsia-300">
+      Screenshots 📷
+    </h2>
+    <div class="flex md:grid grid-cols-3 flex-row gap-4 overflow-x-auto w-full snap-x mb-12">
+      <img
+        class="snap-center rounded-2xl"
+        src="https://github.com/RustySnek/Elixirus/raw/master/images/attendance.webp"
+      />
+      <img
+        class="snap-center rounded-2xl"
+        src="https://github.com/RustySnek/Elixirus/raw/master/images/main.webp"
+      />
+      <img
+        class="snap-center rounded-2xl"
+        src="https://github.com/RustySnek/Elixirus/raw/master/images/subjects.webp"
+      />
+      <img
+        class="snap-center rounded-2xl"
+        src="https://github.com/RustySnek/Elixirus/raw/master/images/messages.webp"
+      />
+      <img
+        class="snap-center rounded-2xl"
+        src="https://github.com/RustySnek/Elixirus/raw/master/images/timetable.webp"
+      />
+    </div>
+
+    <div class="space-y-12">
+      <section id="data-caching">
+        <h3 class="text-2xl font-semibold mb-4 text-fuchsia-300">
+          Data Caching ⚡
+        </h3>
+        <p class="text-gray-300 leading-relaxed">
+          Elixirus caches data, ensuring much quicker load times
+        </p>
+      </section>
+
+      <section id="token-management">
+        <h3 class="text-2xl font-semibold mb-4 text-fuchsia-300">
+          Token Management 🔒
+        </h3>
+        <p class="text-gray-300 leading-relaxed">
+          Elixirus safely manages tokens inside erlang's ETS storage
+        </p>
+      </section>
+
+      <section id="push-notifications">
+        <h3 class="text-2xl font-semibold mb-4 text-fuchsia-300">
+          Push Notifications 📲
+        </h3>
+        <p class="text-gray-300 leading-relaxed">
+          Receive mobile notifications using
+          <a
+            href="https://ntfy.sh/"
+            class="cursor-pointer hover:text-fuchsia-200 transition font-bold text-blue-400"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ntfy.sh
+          </a>
+        </p>
+      </section>
+
+      <section id="qol">
+        <h3 class="text-2xl font-semibold mb-4 text-fuchsia-300">
+          QoL Features 🌟
+        </h3>
+        <p class="text-gray-300 leading-relaxed">
+          View grade average, attendance frequency, next lesson, events, messages, announcements all in one page
+        </p>
+      </section>
+
+      <section id="development">
+        <h3 class="text-2xl font-semibold mb-4 text-fuchsia-300">
+          Development 🔨
+        </h3>
+        <p class="text-gray-300 leading-relaxed">
+          Automated GitHub workflows, Python integration using <.link
+            target="_blank"
+            class="text-fuchsia-400 hover:text-fuchsia-300"
+            navigate="/venomous"
+          >
+            Venomous
+          </.link>, Devenv environment
+        </p>
+      </section>
+
+      <section id="deployment">
+        <h3 class="text-2xl font-semibold mb-4 text-fuchsia-300">
+          Deployment 🚀
+        </h3>
+        <p class="text-gray-300 leading-relaxed">
+          Elixirus provides Dockerfile for easy deployment, builtin http proxy support for scraper, health checks of services
+        </p>
+      </section>
+      <section id="tech-used">
+        <h3 class="text-2xl font-semibold mb-4 text-fuchsia-300">Tech used 🤖</h3>
+        <ul class="text-gray-300 leading-relaxed">
+          <li>
+            <a
+              class="cursor-pointer hover:text-fuchsia-200 transition font-bold text-blue-400"
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://github.com/phoenixframework/phoenix_live_view"
+            >
+              Phoenix LiveView
+            </a>Rich, real-time user experiences with server-rendered HTML 🔥🐦
+          </li>
+          <li>
+            <a
+              class="cursor-pointer hover:text-fuchsia-200 transition font-bold text-blue-400"
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://github.com/oven-sh/bun"
+            >
+              bunjs
+            </a>Incredibly fast JavaScript runtime, bundler, test runner, and package manager 🥖
+          </li>
+          <li>
+            <a
+              class="cursor-pointer hover:text-fuchsia-200 transition font-bold text-blue-400"
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://github.com/RustySnek/Venomous"
+            >
+              Venomous
+            </a>Connecting Elixir with Python 🧪 ❤️ 🐍
+          </li>
+          <li>
+            <a
+              class="cursor-pointer hover:text-fuchsia-200 transition font-bold text-blue-400"
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://github.com/RustySnek/librus-apix"
+            >
+              librus-apix
+            </a>Web Scraper for Librus Synergia written in Python 🪛🐍
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>

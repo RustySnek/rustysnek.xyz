@@ -1,0 +1,108 @@
+<section
+  id="about"
+  class="relative min-h-screen flex items-center justify-center bg-opacity-50 bg-gray-800"
+>
+  <div class="container mx-auto px-4 text-center">
+    <h1 class="text-5xl font-bold mb-6 animate-fade-in-down">Hi, I'm Pascal</h1>
+    <p class="text-2xl mb-8 text-gray-300 animate-fade-in-up">
+      A passionate software developer keeping up with modern technology.
+    </p>
+    <a
+      href="#projects"
+      class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 animate-fade-in"
+    >
+      View My Work
+    </a>
+  </div>
+</section>
+
+<section id="projects" class="py-20">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold mb-12 text-center">My Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <.project
+        name="Kotkowo"
+        tags={["Elixir", "Rust", "JavaScript", "Phoenix LiveView"]}
+        description="🐈 Website for cat adoption charity fundation „Kotkowo” based in Białystok"
+        license="GPLv3"
+        location={~p"/kotkowo"}
+        github="https://github.com/kotkowo/kotkowo"
+      />
+      <.project
+        name="Venomous"
+        tags={["Elixir", "Python"]}
+        description="🐍 Wrapper around erlport python Ports, designed to simplify concurrent use. It focuses on dynamic extensibility, like spawning, reusing and killing processes on demand."
+        license="GPLv3"
+        location={~p"/venomous"}
+        github="https://github.com/rustysnek/venomous"
+      />
+
+      <.project
+        name="Elixirus"
+        tags={["Elixir", "Python", "Phoenix LiveView"]}
+        description="📒 A better replacement for Synergia Learning Managment System web interface"
+        license="GPLv3"
+        location={~p"/elixirus"}
+        github="https://github.com/rustysnek/elixirus"
+      />
+
+      <.project
+        name="librus_apix"
+        tags={["Python"]}
+        description="🤗 Simple web scraper for Synergia Librus education platform to free students from paywalled features"
+        license="GPLv3"
+        location={~p"/librus-apix"}
+        github="https://github.com/rustysnek/librus-apix"
+      />
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="py-20 bg-gray-800">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold mb-12 text-center">My Skills</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <.skill
+        :for={
+          skill <- [
+            "Elixir",
+            "Rust",
+            "Python",
+            "TypeScript",
+            "Docker",
+            "git",
+            "Github CI",
+            "PostgreSQL",
+            "Nix",
+            "Linux",
+            "Networking",
+            "HTML",
+            "CSS",
+            "tailwindcss",
+            "JavaScript"
+          ]
+        }
+        name={skill}
+      />
+    </div>
+  </div>
+</section>
+<section id="frameworks" class="py-20 bg-gray-800">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold mb-12 text-center">Frameworks</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <.skill
+        :for={
+          skill <- [
+            "Phoenix",
+            "Phoenix LiveView",
+            "Next.js",
+            "React",
+            "React Native"
+          ]
+        }
+        name={skill}
+      />
+    </div>
+  </div>
+</section>

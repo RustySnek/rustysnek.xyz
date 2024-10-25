@@ -1,0 +1,175 @@
+<div class="bg-gray-900 text-gray-100 font-inter text-lg md:text-2xl p-6 md:p-12">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-quicksand cool-text md:text-6xl font-extrabold text-fuchsia-400 mb-4">
+      Venomous 🐍 ❤️ 🧪
+    </h1>
+    <div class="md:-mt-6 md:mb-0 mb-4 flex flex-col md:flex-row gap-x-4 items-center gap-8 min-h-40">
+      <a
+        rel="noopener noreferrer"
+        target="_blank"
+        href="https://hex.pm/packages/venomous"
+        class="rounded-lg min-w-40 p-4 bg-gray-800 flex flex-col justify-center items-center cool-shadow duration-500 transition hover:shadow-white text-2xl"
+      >
+        <span>HexPm</span>
+      </a>
+      <a
+        rel="noopener noreferrer"
+        target="_blank"
+        href="https://hexdocs.pm/venomous/Venomous.html"
+        class="rounded-lg min-w-40 p-4 bg-gray-800 flex flex-col justify-center items-center cool-shadow duration-500 transition hover:shadow-white text-2xl"
+      >
+        <span>Docs</span>
+      </a>
+      <a
+        rel="noopener noreferrer"
+        target="_blank"
+        href="https://github.com/RustySnek/Venomous"
+        class="rounded-lg min-w-40 p-4 bg-gray-800 flex flex-col justify-center items-center cool-shadow duration-500 transition hover:shadow-white text-2xl"
+      >
+        <span>Github</span>
+      </a>
+    </div>
+    <p class="text-xl md:text-2xl mb-12 leading-relaxed text-gray-300">
+      Venomous is a wrapper around erlport python Ports, designed to simplify concurrent use. It focuses on dynamic extensibility, like spawning, reusing and killing processes on demand. Venomous core functions capture and handle :EXIT calls ensuring that all python process die with it and do not continue their execution
+    </p>
+
+    <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-fuchsia-300">Key Features</h2>
+    <ul class="space-y-4 mb-12">
+      <li class="transition-all duration-300 ease-in-out transform hover:translate-x-2">
+        <a href="#process-management" class="text-fuchsia-400 hover:text-fuchsia-300">
+          Simplified Python process management <span class="text-white">🐍─୨ৎ─🐍</span>
+        </a>
+      </li>
+      <li class="transition-all duration-300 ease-in-out transform hover:translate-x-2">
+        <a href="#dynamic-extensibility" class="text-fuchsia-400 hover:text-fuchsia-300">
+          Dynamic extensibility ⚡
+        </a>
+      </li>
+      <li class="transition-all duration-300 ease-in-out transform hover:translate-x-2">
+        <a href="#hot-reload" class="text-fuchsia-400 hover:text-fuchsia-300">
+          Hot-reload Python modules 🔥 🔄
+        </a>
+      </li>
+      <li class="transition-all duration-300 ease-in-out transform hover:translate-x-2">
+        <a href="#auto-cleanup" class="text-fuchsia-400 hover:text-fuchsia-300">
+          Automatic process cleanup ♻️
+        </a>
+      </li>
+      <li class="transition-all duration-300 ease-in-out transform hover:translate-x-2">
+        <a href="#configurable" class="text-fuchsia-400 hover:text-fuchsia-300">Configurable 🔧</a>
+      </li>
+      <li class="transition-all duration-300 ease-in-out transform hover:translate-x-2">
+        <a href="#named-processes" class="text-fuchsia-400 hover:text-fuchsia-300">
+          Named processes 🏷️
+        </a>
+      </li>
+      <li class="transition-all duration-300 ease-in-out transform hover:translate-x-2">
+        <a href="#struct-comp" class="text-fuchsia-400 hover:text-fuchsia-300">
+          Elixir struct compatiblity 🧬
+        </a>
+      </li>
+    </ul>
+
+    <div class="space-y-12">
+      <section id="process-management">
+        <h3 class="text-2xl font-semibold mb-4 text-fuchsia-300">
+          Simplified Python Process Management <span class="text-white">🐍─୨ৎ─🐍</span>
+        </h3>
+        <p class="text-gray-300 leading-relaxed">
+          Venomous keeps track of every python OS process id, re-using free process which reduces amount of time spent on spawning new python instances. Furthermore, OS pid allows Venomous to kill processes on the spot whenever needed, without having to wait for Port to close.
+        </p>
+      </section>
+
+      <section id="dynamic-extensibility">
+        <h3 class="text-2xl font-semibold mb-4 text-fuchsia-300">Dynamic Extensibility ⚡</h3>
+        <p class="text-gray-300 leading-relaxed">
+          Venomous makes it easy to spawn/clear up processes on demand, up to configured hard process limit.
+        </p>
+      </section>
+
+      <section id="hot-reload">
+        <h3 class="text-2xl font-semibold mb-4 text-fuchsia-300">
+          Hot-Reload Python Modules 🔥 🔄
+        </h3>
+        <p class="text-gray-300 leading-relaxed">
+          Venomous has optional way of handling hot-reloading of loaded python modules. This requires installing external
+          <code>watchdog</code>
+          python module with <br /><code>mix venomous.watchdog install</code>
+        </p>
+      </section>
+
+      <section id="auto-cleanup">
+        <h3 class="text-2xl font-semibold mb-4 text-fuchsia-300">Automatic Process Cleanup ♻️</h3>
+        <p class="text-gray-300 leading-relaxed">
+          Venomous automatically clears up unused processes after their TTL ends. Minimum amount of alive processes can be configured to ensure X processes always stay alive.
+        </p>
+      </section>
+
+      <section id="configurable">
+        <h3 class="text-2xl font-semibold mb-4 text-fuchsia-300">Configurable 🔧</h3>
+        <p class="text-gray-300 leading-relaxed">
+          Aside from main Venomous configuration, you can set <code>Erlport</code>
+          options for every python process.
+        </p>
+      </section>
+
+      <section id="named-processes">
+        <h3 class="text-2xl font-semibold mb-4 text-fuchsia-300">Named processes 🏷️</h3>
+        <p class="text-gray-300 leading-relaxed">
+          Venomous has secondary option of creating and keeping track of python process by setting its name. This process will be excluded from regular process management and has to be ran manually.
+        </p>
+      </section>
+      <section id="struct-comp">
+        <h3 class="text-2xl font-semibold mb-4 text-fuchsia-300">Elixir struct compatiblity 🧬</h3>
+        <p class="text-gray-300 leading-relaxed">
+          Venomous provides an easy way to convert structs into classes and back with VenomousTrait class and mix venomous.structs ... task. You can check it out
+          <a
+            class="cursor-pointer hover:text-fuchsia-200 transition font-bold text-blue-400"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://hexdocs.pm/venomous/Venomous.html#module-struct-class-comp"
+          >
+            here
+          </a>
+        </p>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div id="messages-container" class="relative absolute w-full" phx-update="ignore"></div>
+<div class="flex flex-row items-center justify-center">
+  <div class="bg-gray-800 rounded-lg shadow-lg p-6 md:w-2/5 min-h-[600px]">
+    <h2 id="sleepy-constrictor" class="text-2xl font-semibold mb-4 text-primary-400">
+      Send Python to sleep! 🛌🐍💤
+    </h2>
+    <p class="text-lg -mt-2 mb-2">
+      You've read it all. Time for some 'fun'. Send processes to sleep and wait for their return!
+    </p>
+    <div class="flex space-x-4 mb-6">
+      <form
+        id="snakeprocess"
+        phx-update="ignore"
+        class="relative flex-grow gap-x-2 flex flex-row"
+        phx-submit="run_snake"
+        phx-change="select_time"
+      >
+        <select
+          name="sleep"
+          class="block appearance-none w-full bg-gray-700 border border-gray-600 text-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-gray-600 focus:border-primary-500"
+          id="process-select"
+          required
+        >
+          <option disabled value="" hidden selected>Select duration</option>
+          <%= Phoenix.HTML.Form.options_for_select(snake_sleep(), @time) %>
+        </select>
+        <button class="min-w-40 z-30 bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105">
+          Sleep Snake
+        </button>
+      </form>
+    </div>
+    <div :if={@snakes} class="space-y-2 max-h-96 overflow-y-auto pr-2">
+      <.snake_process :for={snake <- @snakes} name={snake} status="sleeping" />
+    </div>
+  </div>
+</div>
