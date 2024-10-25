@@ -33,6 +33,8 @@ defmodule RustysnekWeb.Snakes do
     {:noreply, assign(socket, :time, amount)}
   end
 
+  def handle_event("select_time", _params, socket), do: {:noreply, socket}
+
   def handle_event("cancel_snake", %{"value" => snake}, socket) do
     {:noreply, cancel_async(socket, {:await_snake, snake})}
   end
