@@ -4,7 +4,7 @@ defmodule RustysnekWeb.Snakes do
   use RustysnekWeb, :live_view
 
   def mount(_params, _session, socket) do
-    socket = socket |> assign(:snakes, []) |> assign(:process_count, 0) |> assign(:time, nil)
+    socket = socket |> assign(:snakes, []) |> assign(:process_count, 0) |> assign(:time, nil) |> assign(:page_title, "Venomous")
     {:ok, socket}
   end
 

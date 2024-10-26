@@ -68,6 +68,6 @@ defmodule RustysnekWeb.Index do
   end
 
   def mount(_params, _session, socket) do
-    {:ok, socket}
+    {:ok, assign(socket, :page_title, "RustySnek")}
   end
 end
