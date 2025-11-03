@@ -1,29 +1,32 @@
 <section
   id="about"
-  class="relative min-h-screen flex items-center justify-center bg-opacity-50 bg-gray-800"
+  class="relative min-h-screen flex items-center justify-center py-12 sm:py-20"
 >
-  <div class="container mx-auto px-4 text-center">
-    <h1 class="text-5xl font-bold mb-6 animate-fade-in-down">Hi, I'm Pascal</h1>
-    <p class="text-2xl mb-8 text-gray-300 animate-fade-in-up">
-      A passionate software developer keeping up with modern technology.
-    </p>
-    <a
-      href="#projects"
-      class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 animate-fade-in"
-    >
-      View My Work
-    </a>
+  <div class="container mx-auto px-4 sm:px-6 text-center relative z-10">
+    <div class="glass glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 max-w-3xl mx-auto neon-border float">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 animate-fade-in-down neon-text-strong">Hi, I'm Pascal</h1>
+      <p class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-neon-purple-light animate-fade-in-up px-2">
+        A passionate software developer keeping up with modern technology.
+      </p>
+      <.link
+        navigate="/"
+        data-section="projects"
+        class="nav-section-link neon-button inline-block font-bold py-2.5 sm:py-3 px-5 sm:px-6 rounded-full text-sm sm:text-base transition-all duration-300 ease-in-out transform hover:scale-105 animate-fade-in"
+      >
+        View My Work
+      </.link>
+    </div>
   </div>
 </section>
 
-<section id="projects" class="py-20">
-  <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold mb-12 text-center">My Projects</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<section id="projects" class="py-12 sm:py-16 md:py-20 relative z-10">
+  <div class="container mx-auto px-4 sm:px-6">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center neon-text">My Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
       <.project
         name="Kotkowo"
         tags={["Elixir", "Rust", "JavaScript", "Phoenix LiveView"]}
-        description="🐈 Website for cat adoption charity fundation „Kotkowo” based in Białystok"
+        description="🐈 Website for cat adoption charity fundation &bdquo;Kotkowo&rdquo; based in Białystok"
         license="GPLv3"
         location={~p"/kotkowo"}
         github="https://github.com/kotkowo/kotkowo"
@@ -58,10 +61,10 @@
   </div>
 </section>
 
-<section id="skills" class="py-20 bg-gray-800">
-  <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold mb-12 text-center">My Skills</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<section id="skills" class="py-12 sm:py-16 md:py-20 relative z-10">
+  <div class="container mx-auto px-4 sm:px-6">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center neon-text">My Skills</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
       <.skill
         :for={
           skill <- [
@@ -87,10 +90,10 @@
     </div>
   </div>
 </section>
-<section id="frameworks" class="py-20 bg-gray-800">
-  <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold mb-12 text-center">Frameworks</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<section id="frameworks" class="py-12 sm:py-16 md:py-20 relative z-10">
+  <div class="container mx-auto px-4 sm:px-6">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center neon-text">Frameworks</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
       <.skill
         :for={
           skill <- [

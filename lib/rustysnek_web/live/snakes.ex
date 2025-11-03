@@ -2,6 +2,7 @@ defmodule RustysnekWeb.Snakes do
   require Logger
   alias Venomous.SnakeArgs
   use RustysnekWeb, :live_view
+  import RustysnekWeb.Components.Static.Sections
 
   def mount(_params, _session, socket) do
     socket = socket |> assign(:snakes, []) |> assign(:process_count, 0) |> assign(:time, nil) |> assign(:page_title, "Venomous")
@@ -67,16 +68,16 @@ defmodule RustysnekWeb.Snakes do
 
   defp snake_process(assigns) do
     ~H"""
-    <div class="process-item flex items-center justify-between bg-gray-700 p-4 rounded-lg shadow transition-all duration-300 ease-in-out">
-      <span class="font-medium text-gray-200"><%= @name %></span>
+    <div class="process-item flex items-center justify-between glass glass-card p-4 rounded-lg shadow-neon-purple-sm transition-all duration-300 ease-in-out neon-border">
+      <span class="font-medium text-neon-purple-light"><%= @name %></span>
       <div class="flex items-center">
-        <span class="text-green-400 text-sm mr-2"><%= @status %></span>
+        <span class="text-neon-cyan text-sm mr-2"><%= @status %></span>
         <button
           phx-click="cancel_snake"
           value={@name}
-          class="cancel-btn opacity-0 transition-opacity duration-300 ease-in-out rounded-full p-1 hover:bg-gray-600"
+          class="cancel-btn opacity-0 transition-opacity duration-300 ease-in-out rounded-full p-1 hover:glass-light"
         >
-          <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+          <svg class="h-5 w-5 text-neon-pink hover:text-neon-pink-glow" viewBox="0 0 20 20" fill="currentColor">
             <path
               fill-rule="evenodd"
               d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"

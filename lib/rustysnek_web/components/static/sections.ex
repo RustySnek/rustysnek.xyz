@@ -5,7 +5,7 @@ defmodule RustysnekWeb.Components.Static.Sections do
 
   def skill(assigns) do
     ~H"""
-    <div class="bg-gray-700 rounded-lg p-4 text-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-primary-700">
+    <div class="glass glass-card rounded-lg p-4 text-center text-neon-purple-light neon-border transition-all duration-300 ease-in-out transform hover:scale-105">
       <%= @name %>
     </div>
     """
@@ -17,7 +17,7 @@ defmodule RustysnekWeb.Components.Static.Sections do
   def list_item(assigns) do
     ~H"""
     <li class="transition-all duration-300 ease-in-out transform hover:translate-x-2">
-      <a href={@anchor} class="text-fuchsia-400 hover:text-fuchsia-300">
+      <a href={@anchor} class="text-neon-purple-light hover:text-neon-purple-glow hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]">
         <%= @content %>
       </a>
     </li>

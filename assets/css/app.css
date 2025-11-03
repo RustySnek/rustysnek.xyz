@@ -2,40 +2,177 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-html {
-  scroll-behavior: smooth;
+/* Liquid Glass Neon Purple Theme */
+body {
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0f 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 25s ease infinite;
+  min-height: 100vh;
+  position: relative;
+  /* Optimize background rendering */
+  will-change: background-position;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Reduced to 2 gradients for better performance */
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.12) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(17, 24, 39, 0.4);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(168, 85, 247, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  /* GPU acceleration */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.glass-strong {
+  background: rgba(7, 12, 21, 0.7);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(168, 85, 247, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  /* GPU acceleration */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.glass-light {
+  background: rgba(192, 132, 252, 0.08);
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+}
+
+/* Neon glow effects */
+.neon-text {
+  color: #c084fc;
+  /* Reduced from 3 to 2 shadows for better performance */
+  text-shadow: 
+    0 0 10px rgba(192, 132, 252, 0.8),
+    0 0 20px rgba(168, 85, 247, 0.6);
+}
+
+.neon-text-strong {
+  color: #d946ef;
+  /* Reduced from 4 to 2 shadows for better performance */
+  text-shadow: 
+    0 0 10px rgba(217, 70, 239, 1),
+    0 0 20px rgba(168, 85, 247, 0.8);
+}
+
+.neon-border {
+  border: 2px solid rgba(168, 85, 247, 0.5);
+  /* Reduced to single shadow for better performance */
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+.neon-border:hover {
+  border-color: rgba(192, 132, 252, 0.8);
+  /* Reduced from 3 to 2 shadows */
+  box-shadow: 
+    0 0 20px rgba(168, 85, 247, 0.8),
+    0 0 30px rgba(168, 85, 247, 0.4);
+}
+
+/* Liquid animations */
+@keyframes liquid {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+}
+
+.liquid-shape {
+  animation: liquid 8s ease-in-out infinite;
+}
+
+/* Pulse glow animation - optimized to use opacity instead of box-shadow */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+  /* Use opacity animation instead of box-shadow */
+  will-change: opacity;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.float {
+  animation: float 8s ease-in-out infinite;
+  /* GPU acceleration */
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(168, 85, 247, 0.2),
+    transparent
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* Existing animations */
 @keyframes slideUp {
   from {
     transform: translateY(0);
     opacity: 1;
   }
-
   to {
     transform: translateY(-100%);
     opacity: 0;
   }
-}
-
-.cool-text {
-  text-shadow: purple 0px 10px 30px;
-}
-
-.cool-shadow:hover {
-  box-shadow: 0 0 10px;
-}
-
-.process-item:hover .cancel-btn {
-  opacity: 1;
-}
-
-.process-item:target {
-  animation: slideUp 0.5s forwards;
-}
-
-.process-item:target~.process-item {
-  animation: slideUp 0.5s forwards;
 }
 
 @keyframes fadeInDown {
@@ -43,7 +180,6 @@ html {
     opacity: 0;
     transform: translateY(-20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -55,7 +191,6 @@ html {
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -66,7 +201,6 @@ html {
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
@@ -82,6 +216,106 @@ html {
 
 .animate-fade-in {
   animation: fadeIn 1s ease-out;
+}
+
+/* Glass card hover effect */
+.glass-card {
+  /* Specific properties instead of 'all' */
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(192, 132, 252, 0.6);
+  /* Reduced from 3 to 2 shadows */
+  box-shadow: 
+    0 20px 40px rgba(168, 85, 247, 0.3),
+    0 0 30px rgba(168, 85, 247, 0.2);
+}
+
+/* Neon button */
+.neon-button {
+  background: rgba(168, 85, 247, 0.2);
+  border: 2px solid rgba(168, 85, 247, 0.5);
+  color: #c084fc;
+  /* Specific properties instead of 'all' */
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  isolation: isolate;
+  z-index: 0;
+  /* Better touch targets on mobile */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  /* GPU acceleration */
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Ensure touch targets are adequate on mobile */
+@media (max-width: 640px) {
+  .neon-button {
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.neon-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.neon-button:hover::before {
+  left: 100%;
+}
+
+.neon-button > * {
+  position: relative;
+  z-index: 1;
+}
+
+.neon-button:hover {
+  background: rgba(168, 85, 247, 0.3);
+  border-color: rgba(192, 132, 252, 0.8);
+  /* Reduced from 3 to 2 shadows */
+  box-shadow: 
+    0 0 20px rgba(168, 85, 247, 0.6),
+    0 0 30px rgba(168, 85, 247, 0.4);
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(17, 24, 39, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.5);
+  border-radius: 10px;
+  border: 2px solid rgba(17, 24, 39, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(192, 132, 252, 0.7);
 }
 
 /* This file is for your main application CSS */

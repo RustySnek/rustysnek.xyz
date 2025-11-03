@@ -31,7 +31,104 @@ let liveSocket = new LiveSocket("/live", Socket, {
 // Show progress bar on live navigation and form submits
 topbar.config({ barColors: { 0: "#29d" }, shadowColor: "rgba(0, 0, 0, .3)" })
 window.addEventListener("phx:page-loading-start", _info => topbar.show(300))
-window.addEventListener("phx:page-loading-stop", _info => topbar.hide())
+window.addEventListener("phx:page-loading-stop", _info => {
+  topbar.hide()
+  
+  // Check if we need to scroll to a section after navigation
+  const scrollToSection = sessionStorage.getItem("scrollToSection")
+  if (scrollToSection) {
+    sessionStorage.removeItem("scrollToSection")
+    // Use requestAnimationFrame for better performance
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        const element = document.querySelector(`#${scrollToSection}`)
+        if (element) {
+          // Account for sticky header
+          const headerOffset = 80
+          const elementPosition = element.getBoundingClientRect().top
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          })
+        }
+      }, 150)
+    })
+  } else if (window.location.hash) {
+    // Scroll to hash fragment after navigation if present (and we're not scrolling to a section)
+    const element = document.querySelector(window.location.hash)
+    if (element) {
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }, 100)
+      })
+    }
+  }
+})
+
+// Handle scroll-to-section event from navigation buttons
+window.addEventListener("scroll-to-section", (event) => {
+  const section = event.detail?.section
+  if (section) {
+    const scrollToElement = () => {
+      const element = document.querySelector(`#${section}`)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
+    
+    // If we're already on the home page, scroll immediately
+    if (window.location.pathname === '/') {
+      setTimeout(scrollToElement, 100)
+    } else {
+      // Otherwise wait for navigation to complete
+      const handlePageLoad = () => {
+        setTimeout(scrollToElement, 100)
+        window.removeEventListener("phx:page-loading-stop", handlePageLoad)
+      }
+      window.addEventListener("phx:page-loading-stop", handlePageLoad)
+    }
+  }
+})
+
+// Handle clicks on navigation section links
+document.addEventListener("click", (event) => {
+  // Find the closest nav-section-link, handling clicks on the link itself or its children
+  const link = event.target.closest(".nav-section-link")
+  if (link && link.classList.contains("nav-section-link")) {
+    const section = link.getAttribute("data-section")
+    // Verify we got a valid section
+    if (section && (section === "about" || section === "projects" || section === "skills")) {
+      // Store section for scrolling after navigation
+      sessionStorage.setItem("scrollToSection", section)
+      
+      // If we're already on the home page, prevent navigation and scroll immediately
+      if (window.location.pathname === '/') {
+        event.preventDefault()
+        event.stopPropagation()
+        const element = document.querySelector(`#${section}`)
+        if (element) {
+          // Use requestAnimationFrame for smoother scrolling
+          requestAnimationFrame(() => {
+            const headerOffset = 80
+            const elementPosition = element.getBoundingClientRect().top
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+            
+            // Use optimized smooth scroll
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            })
+          })
+        }
+        sessionStorage.removeItem("scrollToSection")
+      }
+      // Otherwise, let navigation happen naturally - scrolling will occur after page-loading-stop
+    }
+  }
+})
 
 window.addEventListener("phx:display_message", (event) => {
   const messagesContainer = document.getElementById("messages-container");

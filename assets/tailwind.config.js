@@ -19,8 +19,33 @@ module.exports = {
         quicksand: ["QuickSand"]
       },
       colors: {
+        neon: {
+          purple: "#a855f7",
+          "purple-light": "#c084fc",
+          "purple-dark": "#9333ea",
+          "purple-glow": "#d946ef",
+          pink: "#ec4899",
+          "pink-glow": "#f472b6",
+          cyan: "#06b6d4",
+          "cyan-glow": "#22d3ee",
+        },
+        glass: {
+          dark: "rgba(17, 24, 39, 0.7)",
+          darker: "rgba(7, 12, 21, 0.8)",
+          purple: "rgba(168, 85, 247, 0.1)",
+          "purple-light": "rgba(192, 132, 252, 0.15)",
+        },
         primary: { "50": "#fdf4ff", "100": "#fae8ff", "200": "#f5d0fe", "300": "#f0abfc", "400": "#e879f9", "500": "#d946ef", "600": "#c026d3", "700": "#a21caf", "800": "#86198f", "900": "#701a75", "950": "#4a044e" }
-      }
+      },
+      backdropBlur: {
+        xs: '2px',
+      },
+      boxShadow: {
+        'neon-purple': '0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.3), 0 0 60px rgba(168, 85, 247, 0.2)',
+        'neon-purple-sm': '0 0 10px rgba(168, 85, 247, 0.4), 0 0 20px rgba(168, 85, 247, 0.2)',
+        'neon-pink': '0 0 20px rgba(236, 72, 153, 0.5), 0 0 40px rgba(236, 72, 153, 0.3)',
+        'glass': '0 8px 32px 0 rgba(168, 85, 247, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.1)',
+      },
     }
   },
   plugins: [

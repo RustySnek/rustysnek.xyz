@@ -11,23 +11,23 @@ defmodule RustysnekWeb.Index do
 
   def project(assigns) do
     ~H"""
-    <div class="p-4 h-80 flex flex-col justify-between bg-[#1f1f1f] rounded-lg overflow-hidden shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105">
+    <div class="p-4 h-80 flex flex-col justify-between glass glass-card rounded-lg overflow-hidden shadow-neon-purple-sm transition-all duration-300 ease-in-out transform hover:scale-105 neon-border">
       <div>
-        <h3 class="text-3xl md:text-4xl font-bold font-quicksand text-white mb-2"><%= @name %></h3>
+        <h3 class="text-3xl md:text-4xl font-bold font-quicksand neon-text mb-2"><%= @name %></h3>
         <div class="flex flex-wrap gap-2 mb-2">
           <span
             :for={tag <- @tags}
-            class="px-2 py-1 text-xs md:text-sm font-semibold text-fuchsia-200 bg-fuchsia-800 rounded-full"
+            class="px-2 py-1 text-xs md:text-sm font-semibold text-neon-purple-dark glass-light rounded-full border border-neon-purple/30"
           >
             <%= tag %>
           </span>
         </div>
-        <p class="text-gray-300 mb-4">
+        <p class="text-neon-purple-light mb-4">
           <%= @description %>
         </p>
       </div>
       <div>
-        <div class="flex mb-4 items-center text-gray-400">
+        <div class="flex mb-4 items-center text-neon-purple-light/70">
           <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
             <path
               fill-rule="evenodd"
@@ -38,10 +38,10 @@ defmodule RustysnekWeb.Index do
           </svg>
           <span><%= @license %></span>
         </div>
-        <div class="px-6 -m-4 py-4 bg-[#1a1a1a] flex justify-between items-center">
+        <div class="px-6 -m-4 py-4 glass-strong flex justify-between items-center">
           <.link
             navigate={@location}
-            class="inline-flex text-lg font-bold items-center px-4 py-2 text-sm font-medium text-white bg-fuchsia-600 rounded-lg hover:bg-fuchsia-500 transition-colors duration-300"
+            class="inline-flex text-lg font-bold items-center px-4 py-2 text-sm font-medium neon-button rounded-lg transition-all duration-300"
           >
             View Project
           </.link>
@@ -49,7 +49,7 @@ defmodule RustysnekWeb.Index do
             rel="noopener noreferrer"
             target="_blank"
             href={@github}
-            class="text-fuchsia-400 hover:text-fuchsia-300 transition-colors duration-300 flex items-center"
+            class="text-neon-purple-light hover:text-neon-purple-glow transition-all duration-300 flex items-center hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]"
           >
             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path

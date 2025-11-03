@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="/fonts/quicksand.css" />
     <link href="/fonts/inter.css" rel="stylesheet" />
   </head>
-  <body class="bg-gray-900 text-gray-100 font-sans antialiased">
-    <%= @inner_content %>
+  <body class="text-gray-100 font-sans antialiased relative">
+    <div class="fixed inset-0 z-0"></div>
+    <div class="relative z-10">
+      <%= @inner_content %>
+    </div>
   </body>
 </html>
