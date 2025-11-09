@@ -100,7 +100,7 @@ document.addEventListener("click", (event) => {
   if (link && link.classList.contains("nav-section-link")) {
     const section = link.getAttribute("data-section")
     // Verify we got a valid section
-    if (section && (section === "about" || section === "projects" || section === "skills")) {
+    if (section && (section === "about" || section === "experience" || section === "projects" || section === "skills")) {
       // Store section for scrolling after navigation
       sessionStorage.setItem("scrollToSection", section)
       
@@ -175,6 +175,66 @@ window.addEventListener("phx:display_message", (event) => {
     }
   }, intervalTime);
 });
+
+// Cursor tracking flashlight effect - GPU optimized
+let cursorGlow = document.createElement('div')
+cursorGlow.id = 'cursor-glow'
+cursorGlow.style.cssText = `
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  will-change: transform, opacity;
+  filter: blur(40px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+`
+document.body.appendChild(cursorGlow)
+
+let moveTimeout
+
+document.addEventListener('mousemove', (e) => {
+  // Use transform3d for GPU acceleration
+  cursorGlow.style.transform = `translate3d(${e.clientX - 200}px, ${e.clientY - 200}px, 0)`
+  cursorGlow.style.opacity = '1'
+  
+  clearTimeout(moveTimeout)
+  moveTimeout = setTimeout(() => {
+    cursorGlow.style.opacity = '0'
+  }, 200)
+})
+
+// Hide on mouse leave
+document.addEventListener('mouseleave', () => {
+  cursorGlow.style.opacity = '0'
+})
+
+// Pause background animation during scroll for better performance
+let scrollTimeout
+let isScrolling = false
+
+function handleScroll() {
+  if (!isScrolling) {
+    document.body.classList.add('scrolling')
+    isScrolling = true
+  }
+  
+  clearTimeout(scrollTimeout)
+  scrollTimeout = setTimeout(() => {
+    document.body.classList.remove('scrolling')
+    isScrolling = false
+  }, 150)
+}
+
+// Use passive listener for better scroll performance
+window.addEventListener('scroll', handleScroll, { passive: true })
+window.addEventListener('wheel', handleScroll, { passive: true })
+window.addEventListener('touchmove', handleScroll, { passive: true })
 
 // connect if there are any LiveViews on the page
 liveSocket.connect()

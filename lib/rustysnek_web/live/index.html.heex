@@ -10,11 +10,41 @@
       </p>
       <.link
         navigate="/"
-        data-section="projects"
+        data-section="experience"
         class="nav-section-link neon-button inline-block font-bold py-2.5 sm:py-3 px-5 sm:px-6 rounded-full text-sm sm:text-base transition-all duration-300 ease-in-out transform hover:scale-105 animate-fade-in"
       >
         View My Work
       </.link>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="py-12 sm:py-16 md:py-20 relative z-10">
+  <div class="container mx-auto px-4 sm:px-6">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center neon-text">Professional Experience</h2>
+    <div class="max-w-4xl mx-auto">
+      <.timeline>
+        <.timeline_item
+          company="CyberSkiller"
+          role="DevOps Engineer"
+          period="2024 - Present"
+          responsibilities={[
+            "Optimized AWS infrastructure scaling to reduce costs and improve operational efficiency",
+            "Enhanced service reliability and resolved traffic-related issues preventing potential downtime",
+            "Developed comprehensive load testing with realistic user scenarios",
+            "Maintained and enhanced secure isolated code execution environments for user-submitted code"
+          ]}
+        />
+        <.timeline_item
+          company="Curiosum"
+          role="Intern"
+          period="Aug 2023 - Sep 2023"
+          responsibilities={[
+            "Created real‑time web application with LiveView",
+            "Worked with Ecto for database integration in Elixir applications",
+          ]}
+        />
+      </.timeline>
     </div>
   </div>
 </section>
@@ -24,6 +54,14 @@
     <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center neon-text">My Projects</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
       <.project
+        name="Venomous"
+        tags={["Elixir", "Python"]}
+        description="🐍 Wrapper around erlport python Ports, designed to simplify concurrent use. It focuses on dynamic extensibility, like spawning, reusing and killing processes on demand."
+        license="MIT"
+        location={~p"/venomous"}
+        github="https://github.com/rustysnek/venomous"
+      />
+      <.project
         name="Kotkowo"
         tags={["Elixir", "Rust", "JavaScript", "Phoenix LiveView"]}
         description="🐈 Website for cat adoption charity fundation &bdquo;Kotkowo&rdquo; based in Białystok"
@@ -31,15 +69,6 @@
         location={~p"/kotkowo"}
         github="https://github.com/kotkowo/kotkowo"
       />
-      <.project
-        name="Venomous"
-        tags={["Elixir", "Python"]}
-        description="🐍 Wrapper around erlport python Ports, designed to simplify concurrent use. It focuses on dynamic extensibility, like spawning, reusing and killing processes on demand."
-        license="GPLv3"
-        location={~p"/venomous"}
-        github="https://github.com/rustysnek/venomous"
-      />
-
       <.project
         name="Elixirus"
         tags={["Elixir", "Python", "Phoenix LiveView"]}
@@ -57,6 +86,14 @@
         location={~p"/librus-apix"}
         github="https://github.com/rustysnek/librus-apix"
       />
+      <.project
+        name="dragoon-nix"
+        tags={["NixOS", "Nix", "Pentesting"]}
+        description="🗡🐉 Simply lightweight NixOS Configuration meant for Pentesting. A powerful NixOS configuration crafted for the noble art of penetration testing and ethical hacking."
+        license="GPLv3"
+        location={~p"/dragoon-nix"}
+        github="https://github.com/RustySnek/dragoon-nix"
+      />
     </div>
   </div>
 </section>
@@ -68,21 +105,20 @@
       <.skill
         :for={
           skill <- [
+            "AWS",
+            "Kubernetes",
+            "Terraform",
+            "CI/CD",
+            "Docker",
+            "Load Testing",
             "Elixir",
             "Rust",
             "Python",
             "TypeScript",
-            "Docker",
-            "git",
-            "Github CI",
             "PostgreSQL",
             "Nix",
             "Linux",
-            "Networking",
-            "HTML",
-            "CSS",
-            "tailwindcss",
-            "JavaScript"
+            "git"
           ]
         }
         name={skill}
@@ -99,9 +135,9 @@
           skill <- [
             "Phoenix",
             "Phoenix LiveView",
+            "Ecto",
             "Next.js",
-            "React",
-            "React Native"
+            "React"
           ]
         }
         name={skill}

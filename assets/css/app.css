@@ -4,13 +4,10 @@
 
 /* Liquid Glass Neon Purple Theme */
 body {
+  /* Static gradient - no animation to avoid repaints */
   background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0f 100%);
-  background-size: 400% 400%;
-  animation: gradientShift 25s ease infinite;
   min-height: 100vh;
   position: relative;
-  /* Optimize background rendering */
-  will-change: background-position;
 }
 
 body::before {
@@ -20,47 +17,74 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  /* Reduced to 2 gradients for better performance */
-  background: 
+  /* Static radial gradients for ambient glow */
+  background:
     radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.12) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Animated overlay using transform instead of background-position */
+body::after {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  animation: gradientMove 25s ease infinite;
+  will-change: transform;
+  /* Pause animation during scroll for better performance */
+  animation-play-state: running;
 }
 
-/* Glass morphism effect */
+/* Pause background animation during scroll for smoother scrolling */
+@media (prefers-reduced-motion: no-preference) {
+  body.scrolling::after {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes gradientMove {
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate3d(20%, 20%, 0) scale(1.1);
+  }
+
+  66% {
+    transform: translate3d(-20%, 10%, 0) scale(0.9);
+  }
+}
+
+/* Glass morphism effect - optimized blur */
 .glass {
   background: rgba(17, 24, 39, 0.4);
-  backdrop-filter: blur(12px) saturate(150%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
   border: 1px solid rgba(168, 85, 247, 0.2);
   box-shadow: 0 8px 32px 0 rgba(168, 85, 247, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-  /* GPU acceleration */
-  transform: translateZ(0);
-  will-change: transform;
+  /* GPU acceleration with containment for better scroll performance */
+  contain: layout style paint;
+  will-change: scroll-position;
 }
 
 .glass-strong {
   background: rgba(7, 12, 21, 0.7);
-  backdrop-filter: blur(14px) saturate(150%);
-  -webkit-backdrop-filter: blur(14px) saturate(150%);
   border: 1px solid rgba(168, 85, 247, 0.3);
   box-shadow: 0 8px 32px 0 rgba(168, 85, 247, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
-  /* GPU acceleration */
-  transform: translateZ(0);
-  will-change: transform;
+  contain: layout style paint;
+  will-change: scroll-position;
 }
 
 .glass-light {
   background: rgba(192, 132, 252, 0.08);
-  backdrop-filter: blur(8px) saturate(150%);
-  -webkit-backdrop-filter: blur(8px) saturate(150%);
   border: 1px solid rgba(168, 85, 247, 0.15);
 }
 
@@ -68,7 +92,7 @@ body::before {
 .neon-text {
   color: #c084fc;
   /* Reduced from 3 to 2 shadows for better performance */
-  text-shadow: 
+  text-shadow:
     0 0 10px rgba(192, 132, 252, 0.8),
     0 0 20px rgba(168, 85, 247, 0.6);
 }
@@ -76,30 +100,44 @@ body::before {
 .neon-text-strong {
   color: #d946ef;
   /* Reduced from 4 to 2 shadows for better performance */
-  text-shadow: 
+  text-shadow:
     0 0 10px rgba(217, 70, 239, 1),
     0 0 20px rgba(168, 85, 247, 0.8);
 }
 
 .neon-border {
   border: 2px solid rgba(168, 85, 247, 0.5);
-  /* Reduced to single shadow for better performance */
-  box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+  /* Use filter drop-shadow for GPU acceleration */
+  filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.5));
 }
 
 .neon-border:hover {
   border-color: rgba(192, 132, 252, 0.8);
-  /* Reduced from 3 to 2 shadows */
-  box-shadow: 
-    0 0 20px rgba(168, 85, 247, 0.8),
-    0 0 30px rgba(168, 85, 247, 0.4);
+  /* Single optimized shadow */
+  filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.8));
+}
+
+/* Skill cards - reduced glow for non-essential elements */
+.skill-card {
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  /* Minimal or no glow on skill cards */
+  filter: none;
+}
+
+.skill-card:hover {
+  border-color: rgba(192, 132, 252, 0.5);
+  /* Subtle glow on hover only */
+  filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.3));
 }
 
 /* Liquid animations */
 @keyframes liquid {
-  0%, 100% {
+
+  0%,
+  100% {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
+
   50% {
     border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
   }
@@ -111,9 +149,12 @@ body::before {
 
 /* Pulse glow animation - optimized to use opacity instead of box-shadow */
 @keyframes pulseGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.7;
   }
+
   50% {
     opacity: 1;
   }
@@ -127,9 +168,12 @@ body::before {
 
 /* Floating animation */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-20px);
   }
@@ -137,30 +181,48 @@ body::before {
 
 .float {
   animation: float 8s ease-in-out infinite;
-  /* GPU acceleration */
+  /* GPU acceleration - only on animated elements */
   will-change: transform;
-  transform: translateZ(0);
 }
 
-/* Shimmer effect */
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
+/* Pause animations when offscreen for better performance */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (content-visibility: auto) {
+    .float:not(:hover) {
+      content-visibility: auto;
+    }
   }
 }
 
+/* Shimmer effect - optimized with transform */
 .shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(168, 85, 247, 0.2),
-    transparent
-  );
-  background-size: 1000px 100%;
-  animation: shimmer 3s infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(168, 85, 247, 0.2),
+      transparent);
+  animation: shimmerMove 3s infinite;
+  will-change: transform;
+}
+
+@keyframes shimmerMove {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(300%);
+  }
 }
 
 /* Existing animations */
@@ -169,6 +231,7 @@ body::before {
     transform: translateY(0);
     opacity: 1;
   }
+
   to {
     transform: translateY(-100%);
     opacity: 0;
@@ -180,6 +243,7 @@ body::before {
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -191,6 +255,7 @@ body::before {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -201,6 +266,7 @@ body::before {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -221,17 +287,17 @@ body::before {
 /* Glass card hover effect */
 .glass-card {
   /* Specific properties instead of 'all' */
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform;
+  transition: transform 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
+  /* Only use will-change on hover, not all the time */
+  will-change: auto;
 }
 
 .glass-card:hover {
   transform: translateY(-5px);
   border-color: rgba(192, 132, 252, 0.6);
-  /* Reduced from 3 to 2 shadows */
-  box-shadow: 
-    0 20px 40px rgba(168, 85, 247, 0.3),
-    0 0 30px rgba(168, 85, 247, 0.2);
+  /* Use filter for GPU-accelerated glow */
+  filter: drop-shadow(0 10px 20px rgba(168, 85, 247, 0.3));
+  will-change: transform, filter;
 }
 
 /* Neon button */
@@ -240,7 +306,7 @@ body::before {
   border: 2px solid rgba(168, 85, 247, 0.5);
   color: #c084fc;
   /* Specific properties instead of 'all' */
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, filter 0.3s ease, transform 0.3s ease;
   position: relative;
   overflow: hidden;
   display: inline-block;
@@ -249,18 +315,90 @@ body::before {
   /* Better touch targets on mobile */
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  /* GPU acceleration */
-  will-change: transform;
-  transform: translateZ(0);
+  /* Only force GPU acceleration on hover */
+  will-change: auto;
+}
+
+.neon-button:hover {
+  will-change: transform, filter;
+}
+
+/* Neon button with gradient border (Blue to Purple) */
+.neon-button-gradient {
+  background: rgba(168, 85, 247, 0.2);
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+  /* Specific properties instead of 'all' */
+  transition: background-color 0.3s ease, filter 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  text-align: center;
+  isolation: isolate;
+  z-index: 0;
+  /* Better touch targets on mobile */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  /* Match width of About button */
+  min-width: 4.5rem;
+  will-change: auto;
+}
+
+.neon-button-gradient:hover {
+  will-change: transform, filter;
+}
+
+.neon-button-gradient::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 25%, #8b5cf6 50%, #a855f7 75%, #9333ea 100%);
+  border-radius: calc(0.5rem + 2px);
+  z-index: -1;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+  pointer-events: none;
+}
+
+.neon-button-gradient:hover::before {
+  filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.6)) drop-shadow(0 0 15px rgba(168, 85, 247, 0.6));
 }
 
 /* Ensure touch targets are adequate on mobile */
 @media (max-width: 640px) {
-  .neon-button {
+  .neon-button,
+  .neon-button-gradient {
     min-height: 36px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+  
+  .neon-button-gradient {
+    min-width: 3.5rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .neon-button-gradient {
+    display: inline-block;
+    text-align: center;
+  }
+}
+
+@media (min-width: 640px) {
+  .neon-button-gradient {
+    min-width: 5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .neon-button-gradient {
+    min-width: 5.5rem;
   }
 }
 
@@ -282,7 +420,25 @@ body::before {
   left: 100%;
 }
 
-.neon-button > * {
+.neon-button-gradient::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.neon-button-gradient:hover::after {
+  left: 100%;
+}
+
+.neon-button>* {
   position: relative;
   z-index: 1;
 }
@@ -290,10 +446,23 @@ body::before {
 .neon-button:hover {
   background: rgba(168, 85, 247, 0.3);
   border-color: rgba(192, 132, 252, 0.8);
-  /* Reduced from 3 to 2 shadows */
-  box-shadow: 
-    0 0 20px rgba(168, 85, 247, 0.6),
-    0 0 30px rgba(168, 85, 247, 0.4);
+  /* Use filter for GPU-accelerated glow */
+  filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.6));
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.neon-button-gradient>* {
+  position: relative;
+  z-index: 2;
+}
+
+.neon-button-gradient:hover {
+  background: rgba(168, 85, 247, 0.3);
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(147, 197, 253, 0.6);
+  /* Use filter for GPU-accelerated glow */
+  filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.6));
   transform: scale(1.05);
   z-index: 10;
 }

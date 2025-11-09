@@ -1,0 +1,155 @@
+<div class="relative z-10 font-inter text-lg md:text-2xl p-6 md:p-12">
+  <div class="max-w-4xl mx-auto">
+    <div class="glass glass-card rounded-3xl p-8 md:p-12 neon-border mb-8">
+      <h1 class="text-4xl font-quicksand neon-text-strong md:text-6xl font-extrabold mb-4">
+        Dragoon 🗡🐉
+      </h1>
+      <h2 class="text-neon-purple-light text-xl md:text-2xl mb-8">
+        Simply lightweight NixOS Configuration meant for Pentesting
+      </h2>
+      <p class="text-xl md:text-2xl mb-8 leading-relaxed text-neon-purple-light">
+        Welcome, valiant seeker of knowledge, to Dragoon, a powerful NixOS configuration crafted for the noble art of penetration testing and ethical hacking. This configuration is your trusted companion on a quest to uncover vulnerabilities and fortify the defenses of the digital realm.
+      </p>
+
+      <div class="md:-mt-6 md:mb-0 mb-4 flex flex-col md:flex-row gap-x-4 items-center gap-8 min-h-40 mt-8">
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://github.com/RustySnek/dragoon-nix"
+          class="neon-button rounded-lg min-w-40 p-4 flex flex-col justify-center items-center text-2xl transition-all duration-300"
+        >
+          <span>Github</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="space-y-12">
+      <section id="installation" class="glass glass-card rounded-2xl p-6 md:p-8 neon-border">
+        <h3 class="text-2xl font-semibold mb-4 neon-text">Installation 🔧</h3>
+        <div class="text-neon-purple-light leading-relaxed space-y-4">
+          <p class="mb-4">Install QEMU/KVM:</p>
+          <pre class="bg-black/30 p-4 rounded-lg overflow-x-auto text-sm md:text-base"><code>git clone https://github.com/RustySnek/dragoon-nix
+cd dragoon-nix/
+
+# format and mount drive
+sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode disko hosts/placidusax/disk.nix
+
+# install
+sudo mount -o remount,size=16G /mnt
+sudo nixos-install --flake .#placidusax</code></pre>
+        </div>
+      </section>
+
+      <section id="features" class="glass glass-card rounded-2xl p-6 md:p-8 neon-border">
+        <h3 class="text-2xl font-semibold mb-4 neon-text">Placidusax Features ⚡</h3>
+        <ul class="text-neon-purple-light leading-relaxed space-y-3">
+          <li><b>~14GB Size</b> - Lightweight configuration optimized for performance</li>
+          <li><b>tmpfs</b> - Fast temporary file system for improved performance</li>
+          <li><b>Projects/Documents/Pictures persistence</b> - Essential directories persist across reboots</li>
+          <li><b>Lightly bloated</b> - Carefully selected tools without unnecessary overhead</li>
+          <li><b>Running i3</b> - Efficient tiling window manager for maximum productivity</li>
+          <li>User: <b>dragoon</b> | Password: <b>skyborne</b></li>
+        </ul>
+        <p class="text-neon-purple-light mt-4">
+          Tool list available in the 
+          <a
+            href="https://github.com/RustySnek/dragoon-nix/blob/master/TOOLS.md"
+            class="cursor-pointer hover:text-neon-purple-glow transition font-bold text-neon-cyan hover:drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            TOOLS.md
+          </a> file
+        </p>
+      </section>
+
+      <section id="keymaps" class="glass glass-card rounded-2xl p-6 md:p-8 neon-border">
+        <h3 class="text-2xl font-semibold mb-4 neon-text">Keymaps ⌨️</h3>
+        
+        <div class="mb-6">
+          <h4 class="text-xl font-semibold mb-3 neon-text">Workspaces (0-9)</h4>
+          <ul class="text-neon-purple-light leading-relaxed space-y-2">
+            <li><b>Switch:</b> Super + 1-0</li>
+            <li><b>Move window:</b> Super + Shift + 1-0</li>
+          </ul>
+        </div>
+
+        <div class="mb-6">
+          <h4 class="text-xl font-semibold mb-3 neon-text">Dmenu / Terminal</h4>
+          <ul class="text-neon-purple-light leading-relaxed space-y-2">
+            <li><b>Rofi:</b> Super + Space</li>
+            <li><b>Kitty terminal:</b> Super + Return</li>
+          </ul>
+        </div>
+
+        <div class="mb-6">
+          <h4 class="text-xl font-semibold mb-3 neon-text">Window Management</h4>
+          <ul class="text-neon-purple-light leading-relaxed space-y-2">
+            <li><b>Kill window:</b> Super + x</li>
+            <li><b>Toggle fullscreen:</b> Super + f</li>
+            <li><b>Toggle floating:</b> Super + s</li>
+            <li><b>Focus movement:</b> Super + h/j/k/l</li>
+            <li><b>Move window:</b> Super + Shift + h/j/k/l</li>
+            <li><b>Restart i3:</b> Super + Shift + R</li>
+          </ul>
+        </div>
+
+        <div class="mb-6">
+          <h4 class="text-xl font-semibold mb-3 neon-text">Neovim Shortcuts</h4>
+          <ul class="text-neon-purple-light leading-relaxed space-y-2">
+            <li><b>Fuzzy search:</b> Space + fz</li>
+            <li><b>File browser:</b> Space + fb</li>
+            <li><b>Git files:</b> Space + fg</li>
+            <li><b>Find files:</b> Space + ff</li>
+            <li><b>Harpoon:</b>
+              <ul class="ml-4 mt-2 space-y-1">
+                <li>Open Harpoon menu: Ctrl + e</li>
+                <li>Jump to Harpoon files: Ctrl + (1,2,3,4)</li>
+              </ul>
+            </li>
+            <li><b>Gitmoji:</b> Space + fm</li>
+            <li><b>Change theme:</b> Ctrl + h</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="tech-used" class="glass glass-card rounded-2xl p-6 md:p-8 neon-border">
+        <h3 class="text-2xl font-semibold mb-4 neon-text">Tech used 🤖</h3>
+        <ul class="text-neon-purple-light leading-relaxed space-y-3">
+          <li>
+            <a
+              class="cursor-pointer hover:text-neon-purple-glow transition font-bold text-neon-cyan hover:drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]"
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://nixos.org/"
+            >
+              NixOS
+            </a> Declarative Linux distribution built on the Nix package manager 🐧
+          </li>
+          <li>
+            <a
+              class="cursor-pointer hover:text-neon-purple-glow transition font-bold text-neon-cyan hover:drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]"
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://i3wm.org/"
+            >
+              i3
+            </a> Tiling window manager for X11 🪟
+          </li>
+          <li>
+            <a
+              class="cursor-pointer hover:text-neon-purple-glow transition font-bold text-neon-cyan hover:drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]"
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://github.com/nix-community/disko"
+            >
+              Disko
+            </a> Declarative disk partitioning and formatting with NixOS 🔧
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>
+
+

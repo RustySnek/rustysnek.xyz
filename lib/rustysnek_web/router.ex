@@ -21,6 +21,7 @@ defmodule RustysnekWeb.Router do
     live "/elixirus", Elixirus
     live "/librus-apix", LibrusApix
     live "/kotkowo", Kotkowo
+    live "/dragoon-nix", DragoonNix
   end
 
   # Other scopes may use custom stacks.
