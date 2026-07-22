@@ -1,12 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" class="dark" class="[scrollbar-gutter:stable]">
+<html lang="en" class="dark [scrollbar-gutter:stable]">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content={get_csrf_token()} />
-    <.live_title suffix=" · Phoenix Framework">
-      <%= assigns[:page_title] || "Rustysnek" %>
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#2e0a1f" />
+    <meta name="author" content="Pascal Jodłowski" />
+    <meta
+      name="description"
+      content="Pascal Jodłowski (RustySnek) — DevOps engineer portfolio. AWS, Elixir, Python and Nix projects: Elixirus, Venomous, librus-apix, Kotkowo and more."
+    />
+    <meta property="og:site_name" content="Rustysnek" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={assigns[:page_title] || "Rustysnek"} />
+    <meta
+      property="og:description"
+      content="Pascal Jodłowski (RustySnek) — DevOps engineer portfolio. AWS, Elixir, Python and Nix projects."
+    />
+    <meta property="og:image" content={url(~p"/images/og.png")} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // Apply the color scheme before first paint. Mirrors assets/js/theme.js:
+      // stored preference wins, "auto" rotates by clock every 5 minutes,
+      // otherwise default to "pink".
+      (() => {
+        const themes = ["ice", "violet", "emerald", "pink"];
+        let stored = null;
+        try { stored = localStorage.getItem("theme"); } catch (_) {}
+        document.documentElement.dataset.theme = themes.includes(stored)
+          ? stored
+          : stored === "auto"
+            ? themes[Math.floor(Date.now() / 300000) % themes.length]
+            : "pink";
+      })();
+    </script>
+    <.live_title suffix=" · Rustysnek">
+      <%= assigns[:page_title] || "Pascal Jodłowski" %>
     </.live_title>
+    <link rel="icon" type="image/svg+xml" href={~p"/favicon.svg"} />
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>

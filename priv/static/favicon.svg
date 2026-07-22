@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- wings -->
+  <ellipse cx="9" cy="36" rx="7" ry="16" fill="#15151d" stroke="#a855f7" stroke-width="2" transform="rotate(16 9 36)"/>
+  <ellipse cx="55" cy="36" rx="7" ry="16" fill="#15151d" stroke="#a855f7" stroke-width="2" transform="rotate(-16 55 36)"/>
+  <!-- feet -->
+  <ellipse cx="23" cy="58" rx="8" ry="4.5" fill="#fb923c"/>
+  <ellipse cx="41" cy="58" rx="8" ry="4.5" fill="#fb923c"/>
+  <!-- body -->
+  <ellipse cx="32" cy="31" rx="23" ry="28" fill="#15151d" stroke="#a855f7" stroke-width="2.5"/>
+  <!-- belly -->
+  <ellipse cx="32" cy="38" rx="15.5" ry="18" fill="#f3f0fa"/>
+  <!-- eyes -->
+  <circle cx="24.5" cy="19" r="5" fill="#ffffff"/>
+  <circle cx="39.5" cy="19" r="5" fill="#ffffff"/>
+  <circle cx="25.5" cy="19.5" r="2.4" fill="#15151d"/>
+  <circle cx="38.5" cy="19.5" r="2.4" fill="#15151d"/>
+  <!-- beak -->
+  <path d="M 27.5 25.5 L 36.5 25.5 L 32 31.5 Z" fill="#fb923c"/>
+</svg>

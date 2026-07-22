@@ -2,7 +2,7 @@ defmodule RustysnekWeb.Snakes do
   require Logger
   alias Venomous.SnakeArgs
   use RustysnekWeb, :live_view
-  import RustysnekWeb.Components.Static.Sections
+  import RustysnekWeb.Components.ProjectComponents
 
   def mount(_params, _session, socket) do
     socket = socket |> assign(:snakes, []) |> assign(:process_count, 0) |> assign(:time, nil) |> assign(:page_title, "Venomous")
@@ -69,7 +69,7 @@ defmodule RustysnekWeb.Snakes do
   defp snake_process(assigns) do
     ~H"""
     <div class="process-item flex items-center justify-between glass glass-card p-4 rounded-lg shadow-neon-purple-sm transition-all duration-300 ease-in-out neon-border">
-      <span class="font-medium text-neon-purple-light"><%= @name %></span>
+      <span class="font-medium text-ink"><%= @name %></span>
       <div class="flex items-center">
         <span class="text-neon-cyan text-sm mr-2"><%= @status %></span>
         <button

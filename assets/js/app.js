@@ -21,6 +21,9 @@ import "phoenix_html"
 import { Socket } from "phoenix"
 import { LiveSocket } from "phoenix_live_view"
 import topbar from "../vendor/topbar"
+import { initTheme } from "./theme"
+
+initTheme()
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {
@@ -30,7 +33,12 @@ let liveSocket = new LiveSocket("/live", Socket, {
 
 // Show progress bar on live navigation and form submits
 topbar.config({ barColors: { 0: "#29d" }, shadowColor: "rgba(0, 0, 0, .3)" })
-window.addEventListener("phx:page-loading-start", _info => topbar.show(300))
+window.addEventListener("phx:page-loading-start", _info => {
+  // Match the progress bar to the active color scheme (canvas can't resolve CSS vars)
+  const themeColor = getComputedStyle(document.documentElement).getPropertyValue("--theme-primary").trim()
+  if (themeColor) topbar.config({ barColors: { 0: themeColor } })
+  topbar.show(300)
+})
 window.addEventListener("phx:page-loading-stop", _info => {
   topbar.hide()
   
@@ -93,6 +101,31 @@ window.addEventListener("scroll-to-section", (event) => {
   }
 })
 
+// Mobile burger menu: delegated so it keeps working across LiveView navigations
+document.addEventListener("click", (event) => {
+  const menu = document.getElementById("mobile-menu")
+  const toggle = document.getElementById("mobile-menu-toggle")
+  if (!menu || !toggle) return
+
+  const setOpen = (open) => {
+    menu.classList.toggle("hidden", !open)
+    toggle.setAttribute("aria-expanded", String(open))
+  }
+
+  if (event.target.closest("#mobile-menu-toggle")) {
+    setOpen(menu.classList.contains("hidden"))
+    return
+  }
+
+  // Close on link click inside the menu, or on any click outside of it
+  if (event.target.closest("#mobile-menu")) {
+    if (event.target.closest("a")) setOpen(false)
+    return
+  }
+
+  setOpen(false)
+})
+
 // Handle clicks on navigation section links
 document.addEventListener("click", (event) => {
   // Find the closest nav-section-link, handling clicks on the link itself or its children
@@ -100,7 +133,7 @@ document.addEventListener("click", (event) => {
   if (link && link.classList.contains("nav-section-link")) {
     const section = link.getAttribute("data-section")
     // Verify we got a valid section
-    if (section && (section === "about" || section === "experience" || section === "projects" || section === "skills")) {
+    if (section && ["about", "experience", "education", "projects", "skills"].includes(section)) {
       // Store section for scrolling after navigation
       sessionStorage.setItem("scrollToSection", section)
       
@@ -147,7 +180,7 @@ window.addEventListener("phx:display_message", (event) => {
   messageElement.style.position = "absolute";
   messageElement.style.top = `${random_top}px`;
   messageElement.style.left = `${random_left}px`;
-  messageElement.style.color = "#F313AB";
+  messageElement.style.color = "var(--theme-accent-glow, #F313AB)";
   messageElement.style.fontWeight = "bold";
   messageElement.style.zIndex = "20";
   messageElement.style.userSelect = 'none';
@@ -184,7 +217,7 @@ cursorGlow.style.cssText = `
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--theme-primary) 15%, transparent) 0%, transparent 70%);
   pointer-events: none;
   z-index: 1;
   left: 0;

@@ -1,71 +1,38 @@
-<div class="relative z-10 font-inter text-lg md:text-2xl p-6 md:p-12">
-  <div class="max-w-4xl mx-auto">
-    <div class="glass glass-card rounded-3xl p-8 md:p-12 neon-border mb-8">
-      <h1 class="text-4xl font-quicksand neon-text-strong md:text-6xl font-extrabold mb-4">
-        librus_apix 🪒
-      </h1>
+<.project_page>
+  <.project_hero
+    title="librus_apix 🪒"
+    subtitle="Simple web scraper for Synergia Librus education platform"
+  >
+    <:links>
+      <.project_link href="https://pypi.org/project/librus-apix/" label="PyPI" icon={:package} primary />
+      <.project_link
+        href="https://rustysnek.github.io/librus-apix/librus_apix.html"
+        label="Docs"
+        icon={:docs}
+      />
+      <.project_link href="https://github.com/RustySnek/librus-apix" label="GitHub" icon={:github} />
+    </:links>
+  </.project_hero>
 
-      <div class="md:-mt-6 md:mb-0 mb-4 flex flex-col md:flex-row gap-x-4 items-center gap-8 min-h-40 mt-8">
-        <a
-          rel="noopener noreferrer"
-          target="_blank"
-          href="https://pypi.org/project/librus-apix/"
-          class="neon-button rounded-lg min-w-40 p-4 flex flex-col justify-center items-center text-2xl transition-all duration-300"
-        >
-          <span>pypi</span>
-        </a>
-        <a
-          rel="noopener noreferrer"
-          target="_blank"
-          href="https://rustysnek.github.io/librus-apix/librus_apix.html"
-          class="neon-button rounded-lg min-w-40 p-4 flex flex-col justify-center items-center text-2xl transition-all duration-300"
-        >
-          <span>Docs</span>
-        </a>
-        <a
-          rel="noopener noreferrer"
-          target="_blank"
-          href="https://github.com/RustySnek/librus-apix"
-          class="neon-button rounded-lg min-w-40 p-4 flex flex-col justify-center items-center text-2xl transition-all duration-300"
-        >
-          <span>Github</span>
-        </a>
-      </div>
-      <p class="text-xl md:text-2xl mb-12 leading-relaxed text-neon-purple-light">
-        Simple web scraper for Synergia Librus education platform
+  <div class="grid gap-4 sm:gap-6 md:grid-cols-2">
+    <.project_section id="motivation" title="Motivation 💭">
+      <p>
+        The idea behind this project is for students to create their own front-end applications for the most widely used educational platform in Poland, with a particular emphasis on mobile development. This initiative targets the limitations of the existing Librus app, which is filled with paid features that are otherwise completely free.
       </p>
-      <h2 class="text-2xl md:text-3xl font-semibold mb-6 neon-text">Table of content</h2>
-      <ul class="space-y-4 mb-12">
-        <.list_item anchor="#motivation" content="Motivation 💭" />
-        <.list_item anchor="#development" content="Development 🔨" />
-      </ul>
-    </div>
+    </.project_section>
 
-    <div class="space-y-12">
-      <section id="motivation" class="glass glass-card rounded-2xl p-6 md:p-8 neon-border">
-        <h3 class="text-2xl font-semibold mb-4 neon-text">
-          Motivation 💭
-        </h3>
-        <p class="text-neon-purple-light leading-relaxed">
-          The idea behind this project is for students to create their own front-end applications for the most widely used educational platform in Poland, with a particular emphasis on mobile development. This initiative targets the limitations of the existing Librus app, which is filled with paid features that are otherwise completely free.
-        </p>
-      </section>
-      <section id="development" class="glass glass-card rounded-2xl p-6 md:p-8 neon-border">
-        <h3 class="text-2xl font-semibold mb-4 neon-text">
-          Development 🔨
-        </h3>
-        <p class="text-neon-purple-light leading-relaxed">
-          librus_apix provides both mock tests and live tests using the retrieved user token. A simple dependancy-less mock html server can be found
-          <a
-            href="https://github.com/RustySnek/librus-apix-mock"
-            class="cursor-pointer hover:text-neon-purple-glow transition font-bold text-neon-cyan hover:drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            here
-          </a>
-        </p>
-      </section>
-    </div>
+    <.project_section id="development" title="Development 🔨">
+      <p>
+        librus_apix provides both mock tests and live tests using the retrieved user token. A simple dependancy-less mock html server can be found
+        <a
+          href="https://github.com/RustySnek/librus-apix-mock"
+          class="cursor-pointer hover:text-neon-purple-glow transition font-bold text-neon-cyan hover:drop-shadow-neon-secondary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          here
+        </a>
+      </p>
+    </.project_section>
   </div>
-</div>
+</.project_page>

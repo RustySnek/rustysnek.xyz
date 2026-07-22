@@ -2,10 +2,211 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* Liquid Glass Neon Purple Theme */
+/*
+ * Liquid Glass Neon Theme - color schemes
+ *
+ * Every color in the design is derived from these custom properties.
+ * They are registered with @property so changing data-theme on <html>
+ * smoothly interpolates colors everywhere (gradients, shadows, text).
+ */
+@property --theme-primary {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ec4899;
+}
+
+@property --theme-light {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #e893ba;
+}
+
+@property --theme-dark {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #db2777;
+}
+
+@property --theme-glow {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f06fae;
+}
+
+@property --theme-accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #a855f7;
+}
+
+@property --theme-accent-glow {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #b78ae0;
+}
+
+@property --theme-secondary {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #06b6d4;
+}
+
+@property --theme-secondary-glow {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #45c4d8;
+}
+
+@property --theme-bg-1 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #0f0a0d;
+}
+
+@property --theme-bg-2 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #2e0a1f;
+}
+
+@property --theme-bg-3 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #3e1630;
+}
+
+@property --theme-bg-4 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #600f3c;
+}
+
+@property --theme-grad-1 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #a855f7;
+}
+
+@property --theme-grad-2 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ec4899;
+}
+
+@property --theme-grad-3 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #db2777;
+}
+
+/* Pink is the default scheme (also applied on :root to avoid a color flash
+   before theme.js runs). */
+:root,
+[data-theme="pink"] {
+  --theme-primary: #ec4899;
+  --theme-light: #e893ba;
+  --theme-dark: #db2777;
+  --theme-glow: #f06fae;
+  --theme-accent: #a855f7;
+  --theme-accent-glow: #b78ae0;
+  --theme-secondary: #06b6d4;
+  --theme-secondary-glow: #45c4d8;
+  --theme-bg-1: #0f0a0d;
+  --theme-bg-2: #2e0a1f;
+  --theme-bg-3: #3e1630;
+  --theme-bg-4: #600f3c;
+  --theme-grad-1: #a855f7;
+  --theme-grad-2: #ec4899;
+  --theme-grad-3: #db2777;
+}
+
+/* Reading colors — neutral and shared across every theme so body copy stays
+   legible regardless of the active neon scheme. Accents/headings keep the
+   themed neon colors; these are only for text you actually read. */
+:root {
+  --theme-text: #ece9ee;
+  --theme-text-muted: #a7a2b0;
+}
+
+[data-theme="violet"] {
+  --theme-primary: #a855f7;
+  --theme-light: #c084fc;
+  --theme-dark: #9333ea;
+  --theme-glow: #d946ef;
+  --theme-accent: #ec4899;
+  --theme-accent-glow: #f472b6;
+  --theme-secondary: #06b6d4;
+  --theme-secondary-glow: #22d3ee;
+  --theme-bg-1: #0a0a0f;
+  --theme-bg-2: #1a0a2e;
+  --theme-bg-3: #16213e;
+  --theme-bg-4: #0f3460;
+  --theme-grad-1: #3b82f6;
+  --theme-grad-2: #8b5cf6;
+  --theme-grad-3: #9333ea;
+}
+
+[data-theme="ice"] {
+  --theme-primary: #38bdf8;
+  --theme-light: #7cc4e0;
+  --theme-dark: #0284c7;
+  --theme-glow: #5fd0ec;
+  --theme-accent: #818cf8;
+  --theme-accent-glow: #97a4f0;
+  --theme-secondary: #a855f7;
+  --theme-secondary-glow: #c084fc;
+  --theme-bg-1: #0a0d12;
+  --theme-bg-2: #0a1a2e;
+  --theme-bg-3: #10293e;
+  --theme-bg-4: #0f3a60;
+  --theme-grad-1: #6366f1;
+  --theme-grad-2: #38bdf8;
+  --theme-grad-3: #0284c7;
+}
+
+[data-theme="emerald"] {
+  --theme-primary: #10b981;
+  --theme-light: #5ec99a;
+  --theme-dark: #059669;
+  --theme-glow: #52d695;
+  --theme-accent: #84cc16;
+  --theme-accent-glow: #9ed833;
+  --theme-secondary: #06b6d4;
+  --theme-secondary-glow: #45c4d8;
+  --theme-bg-1: #0a0f0b;
+  --theme-bg-2: #0a2e1c;
+  --theme-bg-3: #163e2b;
+  --theme-bg-4: #0f6041;
+  --theme-grad-1: #14b8a6;
+  --theme-grad-2: #10b981;
+  --theme-grad-3: #059669;
+}
+
+/* Smooth cross-fade when the theme changes (auto-rotation or manual pick) */
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    transition:
+      --theme-primary 2s ease,
+      --theme-light 2s ease,
+      --theme-dark 2s ease,
+      --theme-glow 2s ease,
+      --theme-accent 2s ease,
+      --theme-accent-glow 2s ease,
+      --theme-secondary 2s ease,
+      --theme-secondary-glow 2s ease,
+      --theme-bg-1 2s ease,
+      --theme-bg-2 2s ease,
+      --theme-bg-3 2s ease,
+      --theme-bg-4 2s ease,
+      --theme-grad-1 2s ease,
+      --theme-grad-2 2s ease,
+      --theme-grad-3 2s ease;
+  }
+}
+
 body {
   /* Static gradient - no animation to avoid repaints */
-  background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0f 100%);
+  background: linear-gradient(135deg, var(--theme-bg-1) 0%, var(--theme-bg-2) 25%, var(--theme-bg-3) 50%, var(--theme-bg-4) 75%, var(--theme-bg-1) 100%);
   min-height: 100vh;
   position: relative;
 }
@@ -19,8 +220,8 @@ body::before {
   height: 100%;
   /* Static radial gradients for ambient glow */
   background:
-    radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.12) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, color-mix(in srgb, var(--theme-primary) 12%, transparent) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, color-mix(in srgb, var(--theme-accent) 12%, transparent) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -33,7 +234,7 @@ body::after {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 60%);
+  background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--theme-primary) 8%, transparent) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
   animation: gradientMove 25s ease infinite;
@@ -68,8 +269,8 @@ body::after {
 /* Glass morphism effect - optimized blur */
 .glass {
   background: rgba(17, 24, 39, 0.4);
-  border: 1px solid rgba(168, 85, 247, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(168, 85, 247, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  border: 1px solid color-mix(in srgb, var(--theme-primary) 20%, transparent);
+  box-shadow: 0 8px 32px 0 color-mix(in srgb, var(--theme-primary) 15%, transparent), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   /* GPU acceleration with containment for better scroll performance */
   contain: layout style paint;
   will-change: scroll-position;
@@ -77,57 +278,62 @@ body::after {
 
 .glass-strong {
   background: rgba(7, 12, 21, 0.7);
-  border: 1px solid rgba(168, 85, 247, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(168, 85, 247, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  border: 1px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);
+  box-shadow: 0 8px 32px 0 color-mix(in srgb, var(--theme-primary) 25%, transparent), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
   contain: layout style paint;
   will-change: scroll-position;
 }
 
+/* Allow the theme picker dropdown to escape the sticky header (paint containment clips it) */
+header.glass-strong {
+  contain: layout style;
+}
+
 .glass-light {
-  background: rgba(192, 132, 252, 0.08);
-  border: 1px solid rgba(168, 85, 247, 0.15);
+  background: color-mix(in srgb, var(--theme-light) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);
 }
 
 /* Neon glow effects */
 .neon-text {
-  color: #c084fc;
+  color: var(--theme-light);
   /* Reduced from 3 to 2 shadows for better performance */
   text-shadow:
-    0 0 10px rgba(192, 132, 252, 0.8),
-    0 0 20px rgba(168, 85, 247, 0.6);
+    0 0 8px color-mix(in srgb, var(--theme-light) 45%, transparent),
+    0 0 18px color-mix(in srgb, var(--theme-primary) 30%, transparent);
 }
 
 .neon-text-strong {
-  color: #d946ef;
+  color: var(--theme-glow);
   /* Reduced from 4 to 2 shadows for better performance */
   text-shadow:
-    0 0 10px rgba(217, 70, 239, 1),
-    0 0 20px rgba(168, 85, 247, 0.8);
+    0 0 8px color-mix(in srgb, var(--theme-glow) 55%, transparent),
+    0 0 18px color-mix(in srgb, var(--theme-primary) 40%, transparent);
 }
 
 .neon-border {
-  border: 2px solid rgba(168, 85, 247, 0.5);
+  border: 2px solid color-mix(in srgb, var(--theme-primary) 50%, transparent);
   /* Use filter drop-shadow for GPU acceleration */
-  filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.5));
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--theme-primary) 50%, transparent));
 }
 
 .neon-border:hover {
-  border-color: rgba(192, 132, 252, 0.8);
+  border-color: color-mix(in srgb, var(--theme-light) 80%, transparent);
   /* Single optimized shadow */
-  filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.8));
+  filter: drop-shadow(0 0 15px color-mix(in srgb, var(--theme-primary) 80%, transparent));
 }
 
 /* Skill cards - reduced glow for non-essential elements */
 .skill-card {
-  border: 1px solid rgba(168, 85, 247, 0.3);
+  border: 1px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);
   /* Minimal or no glow on skill cards */
   filter: none;
 }
 
 .skill-card:hover {
-  border-color: rgba(192, 132, 252, 0.5);
+  border-color: color-mix(in srgb, var(--theme-light) 50%, transparent);
   /* Subtle glow on hover only */
-  filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.3));
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--theme-primary) 30%, transparent));
 }
 
 /* Liquid animations */
@@ -209,7 +415,7 @@ body::after {
   height: 100%;
   background: linear-gradient(90deg,
       transparent,
-      rgba(168, 85, 247, 0.2),
+      color-mix(in srgb, var(--theme-primary) 20%, transparent),
       transparent);
   animation: shimmerMove 3s infinite;
   will-change: transform;
@@ -294,17 +500,17 @@ body::after {
 
 .glass-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(192, 132, 252, 0.6);
+  border-color: color-mix(in srgb, var(--theme-light) 60%, transparent);
   /* Use filter for GPU-accelerated glow */
-  filter: drop-shadow(0 10px 20px rgba(168, 85, 247, 0.3));
+  filter: drop-shadow(0 10px 20px color-mix(in srgb, var(--theme-primary) 30%, transparent));
   will-change: transform, filter;
 }
 
 /* Neon button */
 .neon-button {
-  background: rgba(168, 85, 247, 0.2);
-  border: 2px solid rgba(168, 85, 247, 0.5);
-  color: #c084fc;
+  background: color-mix(in srgb, var(--theme-primary) 20%, transparent);
+  border: 2px solid color-mix(in srgb, var(--theme-primary) 50%, transparent);
+  color: var(--theme-light);
   /* Specific properties instead of 'all' */
   transition: background-color 0.3s ease, border-color 0.3s ease, filter 0.3s ease, transform 0.3s ease;
   position: relative;
@@ -323,9 +529,9 @@ body::after {
   will-change: transform, filter;
 }
 
-/* Neon button with gradient border (Blue to Purple) */
+/* Neon button with gradient border */
 .neon-button-gradient {
-  background: rgba(168, 85, 247, 0.2);
+  background: color-mix(in srgb, var(--theme-primary) 20%, transparent);
   color: #ffffff;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
   /* Specific properties instead of 'all' */
@@ -341,8 +547,6 @@ body::after {
   -webkit-tap-highlight-color: transparent;
   border: 2px solid transparent;
   background-clip: padding-box;
-  /* Match width of About button */
-  min-width: 4.5rem;
   will-change: auto;
 }
 
@@ -357,15 +561,15 @@ body::after {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 25%, #8b5cf6 50%, #a855f7 75%, #9333ea 100%);
-  border-radius: calc(0.5rem + 2px);
+  background: linear-gradient(135deg, var(--theme-grad-1) 0%, var(--theme-grad-2) 50%, var(--theme-grad-3) 100%);
+  border-radius: inherit;
   z-index: -1;
   transition: opacity 0.3s ease, filter 0.3s ease;
   pointer-events: none;
 }
 
 .neon-button-gradient:hover::before {
-  filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.6)) drop-shadow(0 0 15px rgba(168, 85, 247, 0.6));
+  filter: drop-shadow(0 0 15px color-mix(in srgb, var(--theme-grad-1) 60%, transparent)) drop-shadow(0 0 15px color-mix(in srgb, var(--theme-primary) 60%, transparent));
 }
 
 /* Ensure touch targets are adequate on mobile */
@@ -376,29 +580,6 @@ body::after {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .neon-button-gradient {
-    min-width: 3.5rem;
-  }
-}
-
-@media (min-width: 640px) {
-  .neon-button-gradient {
-    display: inline-block;
-    text-align: center;
-  }
-}
-
-@media (min-width: 640px) {
-  .neon-button-gradient {
-    min-width: 5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .neon-button-gradient {
-    min-width: 5.5rem;
   }
 }
 
@@ -444,10 +625,10 @@ body::after {
 }
 
 .neon-button:hover {
-  background: rgba(168, 85, 247, 0.3);
-  border-color: rgba(192, 132, 252, 0.8);
+  background: color-mix(in srgb, var(--theme-primary) 30%, transparent);
+  border-color: color-mix(in srgb, var(--theme-light) 80%, transparent);
   /* Use filter for GPU-accelerated glow */
-  filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.6));
+  filter: drop-shadow(0 0 15px color-mix(in srgb, var(--theme-primary) 60%, transparent));
   transform: scale(1.05);
   z-index: 10;
 }
@@ -458,11 +639,11 @@ body::after {
 }
 
 .neon-button-gradient:hover {
-  background: rgba(168, 85, 247, 0.3);
+  background: color-mix(in srgb, var(--theme-primary) 30%, transparent);
   color: #ffffff;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(147, 197, 253, 0.6);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px color-mix(in srgb, var(--theme-secondary-glow) 60%, transparent);
   /* Use filter for GPU-accelerated glow */
-  filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.6));
+  filter: drop-shadow(0 0 15px color-mix(in srgb, var(--theme-primary) 60%, transparent));
   transform: scale(1.05);
   z-index: 10;
 }
@@ -478,13 +659,56 @@ body::after {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(168, 85, 247, 0.5);
+  background: color-mix(in srgb, var(--theme-primary) 50%, transparent);
   border-radius: 10px;
   border: 2px solid rgba(17, 24, 39, 0.5);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(192, 132, 252, 0.7);
+  background: color-mix(in srgb, var(--theme-light) 70%, transparent);
+}
+
+/* Per-theme mascot icon in the navbar */
+.theme-icon {
+  display: none;
+}
+
+[data-theme="ice"] .theme-icon-ice,
+[data-theme="violet"] .theme-icon-violet,
+[data-theme="emerald"] .theme-icon-emerald,
+[data-theme="pink"] .theme-icon-pink {
+  display: block;
+}
+
+/* Theme picker dropdown */
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--theme-light);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.theme-option:hover {
+  background: color-mix(in srgb, var(--theme-primary) 15%, transparent);
+}
+
+.theme-option.active {
+  background: color-mix(in srgb, var(--theme-primary) 25%, transparent);
+  color: var(--theme-glow);
+}
+
+.theme-swatch {
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 9999px;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px var(--swatch, transparent);
+  background: var(--swatch, conic-gradient(#38bdf8, #a855f7, #10b981, #ec4899, #38bdf8));
 }
 
 /* This file is for your main application CSS */

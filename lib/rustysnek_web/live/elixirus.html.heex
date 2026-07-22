@@ -1,185 +1,135 @@
-<div class="relative z-10 font-inter text-lg md:text-2xl p-6 md:p-12">
-  <div class="max-w-4xl mx-auto">
-    <div class="glass glass-card rounded-3xl p-8 md:p-12 neon-border mb-8">
-      <h1 class="text-4xl font-quicksand neon-text-strong md:text-6xl font-extrabold mb-4">
-        Elixirus 📔
-      </h1>
-      <h2 class="text-neon-purple-light text-xl md:text-2xl mb-8">📒 A better replacement for Synergia Learning Managment System web interface</h2>
+<.project_page>
+  <.project_hero
+    title="Elixirus 📔"
+    subtitle="📒 A better replacement for Synergia Learning Management System web interface"
+  >
+    <:links>
+      <.project_link href="https://elixirus.rustysnek.xyz/student" label="Live" icon={:live} primary />
+      <.project_link href="https://elixirus-test.rustysnek.xyz/student" label="Demo" icon={:live} />
+      <.project_link href="https://github.com/RustySnek/Elixirus" label="GitHub" icon={:github} />
+    </:links>
+    <p>
+      Elixirus is a web application written in Elixir Phoenix for the
+      <.link
+        target="_blank"
+        class="text-neon-cyan font-bold hover:text-neon-purple-glow hover:drop-shadow-neon-secondary"
+        navigate="/librus-apix"
+      >
+        librus_apix
+      </.link>
+      web scraper, providing a superior replacement for the native Librus web interface.
+    </p>
+  </.project_hero>
 
-      <div class="md:-mt-6 md:mb-0 mb-4 flex flex-col md:flex-row gap-x-4 items-center gap-8 min-h-40 mt-8">
+  <h2 id="screenshots" class="text-xl md:text-2xl font-semibold mb-4 neon-text">
+    Screenshots 📷
+  </h2>
+  <div class="flex md:grid md:grid-cols-3 gap-3 sm:gap-4 overflow-x-auto snap-x mb-6 sm:mb-8">
+    <img
+      :for={{src, alt} <- [
+        {"/images/attendance.webp", "Attendance view"},
+        {"/images/main.webp", "Main dashboard"},
+        {"/images/subjects.webp", "Subjects and grades"},
+        {"/images/messages.webp", "Messages"},
+        {"/images/timetable.webp", "Timetable"}
+      ]}
+      src={src}
+      alt={alt}
+      loading="lazy"
+      class="snap-center rounded-2xl glass glass-card neon-border p-2 w-64 shrink-0 md:w-full md:shrink"
+    />
+  </div>
+
+  <div class="grid gap-4 sm:gap-6 md:grid-cols-2">
+    <.project_section id="data-caching" title="Data Caching ⚡">
+      <p>Elixirus caches data, ensuring much quicker load times</p>
+    </.project_section>
+
+    <.project_section id="token-management" title="Token Management 🔒">
+      <p>Elixirus safely manages tokens inside erlang's ETS storage</p>
+    </.project_section>
+
+    <.project_section id="push-notifications" title="Push Notifications 📲">
+      <p>
+        Receive mobile notifications using
         <a
+          href="https://ntfy.sh/"
+          class="cursor-pointer hover:text-neon-purple-glow transition font-bold text-neon-cyan hover:drop-shadow-neon-secondary"
+          target="_blank"
           rel="noopener noreferrer"
-          target="_blank"
-          href="https://elixirus.rustysnek.xyz/student"
-          class="neon-button rounded-lg min-w-40 p-4 flex flex-col justify-center items-center text-2xl transition-all duration-300"
         >
-          <span>Live</span>
+          ntfy.sh
         </a>
-        <a
-          rel="noopener noreferrer"
-          target="_blank"
-          href="https://elixirus-test.rustysnek.xyz/student"
-          class="neon-button rounded-lg min-w-40 p-4 flex flex-col justify-center items-center text-2xl transition-all duration-300"
-        >
-          <span>Demo</span>
-        </a>
-        <a
-          rel="noopener noreferrer"
-          target="_blank"
-          href="https://github.com/RustySnek/Elixirus"
-          class="neon-button rounded-lg min-w-40 p-4 flex flex-col justify-center items-center text-2xl transition-all duration-300"
-        >
-          <span>Github</span>
-        </a>
-      </div>
-      <p class="text-xl md:text-2xl mb-12 leading-relaxed text-neon-purple-light">
-        Elixirus is a web application written in Elixir Phoenix for the
-        <.link
-          target="_blank"
-          class="text-neon-cyan hover:text-neon-purple-glow hover:drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]"
-          navigate="/librus-apix"
-        >
-          librus_apix
-        </.link>
-        web scraper, providing a superior replacement for the native Librus web interface.
       </p>
-      <h2 class="text-2xl md:text-3xl font-semibold mb-6 neon-text">Table of content</h2>
-      <ul class="space-y-4 mb-12">
-        <.list_item anchor="#screenshots" content="Screenshots 📷" />
-        <.list_item anchor="#data-caching" content="Data Caching ⚡" />
-        <.list_item anchor="#token-management" content="Token Management 🔒" />
-        <.list_item anchor="#push-notifications" content="Push Notifications 📲" />
-        <.list_item anchor="#qol" content="QoL Features 🌟" />
-        <.list_item anchor="#development" content="Development 🔨" />
-        <.list_item anchor="#deployment" content="Deployment 🚀" />
-        <.list_item anchor="#tech-used" content="Tech used 🤖" />
-      </ul>
-    </div>
+    </.project_section>
 
-    <h2 id="screenshots" class="text-2xl md:text-3xl font-semibold mb-6 neon-text">
-      Screenshots 📷
-    </h2>
-    <div class="flex md:grid grid-cols-3 flex-row gap-4 overflow-x-auto w-full snap-x mb-12">
-      <img class="snap-center rounded-2xl glass glass-card neon-border p-2" src="/images/attendance.webp" />
-      <img class="snap-center rounded-2xl glass glass-card neon-border p-2" src="/images/main.webp" />
-      <img class="snap-center rounded-2xl glass glass-card neon-border p-2" src="/images/subjects.webp" />
-      <img class="snap-center rounded-2xl glass glass-card neon-border p-2" src="/images/messages.webp" />
-      <img class="snap-center rounded-2xl glass glass-card neon-border p-2" src="/images/timetable.webp" />
-    </div>
+    <.project_section id="qol" title="QoL Features 🌟">
+      <p>
+        View grade average, attendance frequency, next lesson, events, messages, announcements all in one page
+      </p>
+    </.project_section>
 
-    <div class="space-y-12">
-      <section id="data-caching" class="glass glass-card rounded-2xl p-6 md:p-8 neon-border">
-        <h3 class="text-2xl font-semibold mb-4 neon-text">
-          Data Caching ⚡
-        </h3>
-        <p class="text-neon-purple-light leading-relaxed">
-          Elixirus caches data, ensuring much quicker load times
-        </p>
-      </section>
+    <.project_section id="development" title="Development 🔨">
+      <p>
+        Automated GitHub workflows, Python integration using <.link
+          target="_blank"
+          class="text-neon-cyan font-bold hover:text-neon-purple-glow hover:drop-shadow-neon-secondary"
+          navigate="/venomous"
+        >
+          Venomous
+        </.link>, Devenv environment
+      </p>
+    </.project_section>
 
-      <section id="token-management" class="glass glass-card rounded-2xl p-6 md:p-8 neon-border">
-        <h3 class="text-2xl font-semibold mb-4 neon-text">
-          Token Management 🔒
-        </h3>
-        <p class="text-neon-purple-light leading-relaxed">
-          Elixirus safely manages tokens inside erlang's ETS storage
-        </p>
-      </section>
+    <.project_section id="deployment" title="Deployment 🚀">
+      <p>
+        Elixirus provides Dockerfile for easy deployment, builtin http proxy support for scraper, health checks of services
+      </p>
+    </.project_section>
 
-      <section id="push-notifications" class="glass glass-card rounded-2xl p-6 md:p-8 neon-border">
-        <h3 class="text-2xl font-semibold mb-4 neon-text">
-          Push Notifications 📲
-        </h3>
-        <p class="text-neon-purple-light leading-relaxed">
-          Receive mobile notifications using
+    <.project_section id="tech-used" title="Tech used 🤖" wide>
+      <ul class="space-y-3">
+        <li>
           <a
-            href="https://ntfy.sh/"
-            class="cursor-pointer hover:text-neon-purple-glow transition font-bold text-neon-cyan hover:drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]"
-            target="_blank"
+            class="cursor-pointer hover:text-neon-purple-glow transition font-bold text-neon-cyan hover:drop-shadow-neon-secondary"
             rel="noopener noreferrer"
-          >
-            ntfy.sh
-          </a>
-        </p>
-      </section>
-
-      <section id="qol" class="glass glass-card rounded-2xl p-6 md:p-8 neon-border">
-        <h3 class="text-2xl font-semibold mb-4 neon-text">
-          QoL Features 🌟
-        </h3>
-        <p class="text-neon-purple-light leading-relaxed">
-          View grade average, attendance frequency, next lesson, events, messages, announcements all in one page
-        </p>
-      </section>
-
-      <section id="development" class="glass glass-card rounded-2xl p-6 md:p-8 neon-border">
-        <h3 class="text-2xl font-semibold mb-4 neon-text">
-          Development 🔨
-        </h3>
-        <p class="text-neon-purple-light leading-relaxed">
-          Automated GitHub workflows, Python integration using <.link
             target="_blank"
-            class="text-neon-cyan hover:text-neon-purple-glow hover:drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]"
-            navigate="/venomous"
+            href="https://github.com/phoenixframework/phoenix_live_view"
+          >
+            Phoenix LiveView
+          </a> Rich, real-time user experiences with server-rendered HTML 🔥🐦
+        </li>
+        <li>
+          <a
+            class="cursor-pointer hover:text-neon-purple-glow transition font-bold text-neon-cyan hover:drop-shadow-neon-secondary"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://github.com/oven-sh/bun"
+          >
+            bunjs
+          </a> Incredibly fast JavaScript runtime, bundler, test runner, and package manager 🥖
+        </li>
+        <li>
+          <a
+            class="cursor-pointer hover:text-neon-purple-glow transition font-bold text-neon-cyan hover:drop-shadow-neon-secondary"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://github.com/RustySnek/Venomous"
           >
             Venomous
-          </.link>, Devenv environment
-        </p>
-      </section>
-
-      <section id="deployment" class="glass glass-card rounded-2xl p-6 md:p-8 neon-border">
-        <h3 class="text-2xl font-semibold mb-4 neon-text">
-          Deployment 🚀
-        </h3>
-        <p class="text-neon-purple-light leading-relaxed">
-          Elixirus provides Dockerfile for easy deployment, builtin http proxy support for scraper, health checks of services
-        </p>
-      </section>
-      <section id="tech-used" class="glass glass-card rounded-2xl p-6 md:p-8 neon-border">
-        <h3 class="text-2xl font-semibold mb-4 neon-text">Tech used 🤖</h3>
-        <ul class="text-neon-purple-light leading-relaxed space-y-3">
-          <li>
-            <a
-              class="cursor-pointer hover:text-neon-purple-glow transition font-bold text-neon-cyan hover:drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]"
-              rel="noopener noreferrer"
-              target="_blank"
-              href="https://github.com/phoenixframework/phoenix_live_view"
-            >
-              Phoenix LiveView
-            </a> Rich, real-time user experiences with server-rendered HTML 🔥🐦
-          </li>
-          <li>
-            <a
-              class="cursor-pointer hover:text-neon-purple-glow transition font-bold text-neon-cyan hover:drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]"
-              rel="noopener noreferrer"
-              target="_blank"
-              href="https://github.com/oven-sh/bun"
-            >
-              bunjs
-            </a> Incredibly fast JavaScript runtime, bundler, test runner, and package manager 🥖
-          </li>
-          <li>
-            <a
-              class="cursor-pointer hover:text-neon-purple-glow transition font-bold text-neon-cyan hover:drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]"
-              rel="noopener noreferrer"
-              target="_blank"
-              href="https://github.com/RustySnek/Venomous"
-            >
-              Venomous
-            </a> Connecting Elixir with Python 🧪 ❤️ 🐍
-          </li>
-          <li>
-            <a
-              class="cursor-pointer hover:text-neon-purple-glow transition font-bold text-neon-cyan hover:drop-shadow-[0_0_10px_rgba(6,182,212,0.8)]"
-              rel="noopener noreferrer"
-              target="_blank"
-              href="https://github.com/RustySnek/librus-apix"
-            >
-              librus-apix
-            </a> Web Scraper for Librus Synergia written in Python 🪛🐍
-          </li>
-        </ul>
-      </section>
-    </div>
+          </a> Connecting Elixir with Python 🧪 ❤️ 🐍
+        </li>
+        <li>
+          <a
+            class="cursor-pointer hover:text-neon-purple-glow transition font-bold text-neon-cyan hover:drop-shadow-neon-secondary"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://github.com/RustySnek/librus-apix"
+          >
+            librus-apix
+          </a> Web Scraper for Librus Synergia written in Python 🪛🐍
+        </li>
+      </ul>
+    </.project_section>
   </div>
-</div>
+</.project_page>

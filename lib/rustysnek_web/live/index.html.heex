@@ -5,8 +5,8 @@
   <div class="container mx-auto px-4 sm:px-6 text-center relative z-10">
     <div class="glass glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 max-w-3xl mx-auto neon-border float">
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 animate-fade-in-down neon-text-strong">Hi, I'm Pascal</h1>
-      <p class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-neon-purple-light animate-fade-in-up px-2">
-        A passionate software developer keeping up with modern technology.
+      <p class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-ink animate-fade-in-up px-2">
+        DevOps engineer focused on infrastructure automation and AWS.
       </p>
       <.link
         navigate="/"
@@ -37,14 +37,29 @@
         />
         <.timeline_item
           company="Curiosum"
-          role="Intern"
-          period="Aug 2023 - Sep 2023"
+          role="Fullstack Elixir Developer (Intern)"
+          period="2023"
           responsibilities={[
             "Created real‑time web application with LiveView",
             "Worked with Ecto for database integration in Elixir applications",
           ]}
         />
       </.timeline>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="py-12 sm:py-16 md:py-20 relative z-10">
+  <div class="container mx-auto px-4 sm:px-6">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center neon-text">Education</h2>
+    <div class="max-w-4xl mx-auto">
+      <.education_item
+        institution="Wyższa Szkoła Biznesu – National Louis University"
+        degree="BEng Computer Science"
+        specialization="Artificial Intelligence Engineering"
+        period="2026 – 2030"
+        note="in progress"
+      />
     </div>
   </div>
 </section>
@@ -114,6 +129,7 @@
             "Elixir",
             "Rust",
             "Python",
+            "JavaScript",
             "TypeScript",
             "PostgreSQL",
             "Nix",
@@ -136,8 +152,49 @@
             "Phoenix",
             "Phoenix LiveView",
             "Ecto",
+            "Django",
+            "Angular",
+            "Redux",
             "Next.js",
-            "React"
+            "React",
+            "Tailwind",
+            "REST API",
+            "GraphQL"
+          ]
+        }
+        name={skill}
+      />
+    </div>
+  </div>
+</section>
+
+<section id="ai-llm" class="py-12 sm:py-16 md:py-20 relative z-10">
+  <div class="container mx-auto px-4 sm:px-6">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center neon-text">AI / LLM</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+      <.skill
+        :for={
+          skill <- [
+            "LLM APIs",
+            "RAG",
+            "Vector DBs"
+          ]
+        }
+        name={skill}
+      />
+    </div>
+  </div>
+</section>
+
+<section id="languages" class="py-12 sm:py-16 md:py-20 relative z-10">
+  <div class="container mx-auto px-4 sm:px-6">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center neon-text">Languages</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+      <.skill
+        :for={
+          skill <- [
+            "English",
+            "Polish"
           ]
         }
         name={skill}
